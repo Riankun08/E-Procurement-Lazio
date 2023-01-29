@@ -1,0 +1,105 @@
+catatan webHomedevs
+
+database
+
+users
+id : primary
+email : varchar 255
+username : varchar 255
+role : enum 'admin' , 'super admin'
+password : varchar 255
+
+services
+id : primary
+name : varchar 255
+description : text
+icon : varchar 255
+
+BannerServices
+id : primary
+serviceId : foreng
+title : varchar 255
+description : text
+image : varchar 255
+
+AboutServices
+id : primary
+title : varchar 255
+description : text
+excellenceOneIcon : varchar 255
+excellenceOneTitle : varhcar 255
+excellenceOneDescription : text
+excellenceTwoIcon : varchar 255
+excellenceTwoTitle : varchar 255
+excellenceTwoDescription : text
+excellenceThreeIcon : varchar 255
+excellenceThreeTitle : varchar 255
+excellenceThreeDescription : text
+excellenceFourIcon : varchar 255
+excellenceFourTitle : varchar 255
+excellenceFourDescription : text
+
+EntrustServices
+id : primary
+title : varchar 255
+description : text
+image : varchar 255
+PointOneTitle : : varchar 255
+PointOneDescription : text
+PointTwoTitle : : varchar 255
+PointTwoDescription : text
+PointThreeTitle : varchar 255
+PointThreeDescription : text
+
+OurTeams
+id : primary
+divisionId : foreng
+name : varchar 255
+facebook : text
+linkedin : text
+email : text
+dribbble : text
+instagram : text
+
+portofolios
+id : primary
+clientId : foreng
+serviceId : foreng
+name : varhcar 255
+description : text
+image : text
+link : text
+imagePreviewOne : text
+imagePreviewTwo : text 
+imagePreviewThree : text
+
+divisions
+id : primary
+name : varchar 255
+icon : text
+
+clients
+id : primary
+divisionId : foreng
+name : varchar 255
+comment : text
+budged : integer
+
+countDowns
+id : primary
+serviceId : foreng
+language : varchar 255
+client : varchar 255
+porfolio : varchar 255
+requestComplate : varchar 255
+
+orders
+ 
+
+
+
+
+
+
+
+

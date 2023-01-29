@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <title>Masuk</title>
+    
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="../assets/image/logo-naira-object.png">
+    
+    <!-- FontAwesome JS-->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    
+    <link rel="shortcut icon" href="{{ asset('assets/template/image/small/logo-biond.png') }}"> 
+
+	<!-- App CSS -->  
+    <link rel="stylesheet" href="form-login.css">
+    <link rel="stylesheet" href="portal.css">
+    <!-- <link id="theme-style" rel="stylesheet" href="{{ asset('assets/css/portal.css') }}">
+    <link id="theme-style" rel="stylesheet" href="{{ asset('assets/css/form-login.css') }}"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+
+    <script src="https://js.pusher.com/7.1/pusher.min.js"></script>
+    <script>
+         var pusher = new Pusher('4b0bb55ddb69568f0bca', {
+      cluster: 'ap1'
+    });
+
+    var channel = pusher.subscribe('my-channel');
+    channel.bind('my-event', function(data) {
+      alert(JSON.stringify(data));
+    });
+    </script>
+</head>
+<body class="app app-login p-0">
+<!-- Sweetalert -->
+<!-- @include('sweetalert::alert') -->
+<!-- End Sweetalert -->
+<div class="row g-0 app-auth-wrapper">
+    <div class="col-12 col-md-7 col-lg-4 auth-main-col text-center p-3">
+        <div class="d-flex flex-column align-content-end">
+            <div class="app-auth-body mx-auto">	
+                <div class="app-auth-branding mb-4"><a class="app-logo" href="index.html"><img class="logo-icon-login mt-5 me-2" src="../assets/image/logo-naira.png" alt="logo"></a></div>
+                <div class="mb-3">
+                    <h2 class="auth-heading text-heading-h1-form-login text-center">Selamat Datang</h2>
+                    <span class="text-paragraf-form">Nikmati perbedaan berbelanja bersama kami</span>
+                </div>
+                <div class="auth-form-container text-start">
+                    <form class="auth-form login-form" action="{{ route('admin.login.submit') }}" method="post">
+                        <!-- @csrf -->
+                        <div class="group-form-login mb-3">
+                            <div class="email mb-4">
+                                <div class="group-input">
+                                    <div class="block-icon" style="height: 50px; line-height: 45px; border-top-left-radius: 5px; border-bottom-left-radius: 5px; border-left: 1px solid #DADADA; border-top: 1px solid #DADADA; border-bottom: 1px solid #DADADA;">
+                                        <svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M7 8C9.1875 8 11 6.21875 11 4C11 1.8125 9.1875 0 7 0C4.78125 0 3 1.8125 3 4C3 6.21875 4.78125 8 7 8ZM9.78125 9H9.25C8.5625 9.34375 7.8125 9.5 7 9.5C6.1875 9.5 5.40625 9.34375 4.71875 9H4.1875C1.875 9 0 10.9062 0 13.2188V14.5C0 15.3438 0.65625 16 1.5 16H12.5C13.3125 16 14 15.3438 14 14.5V13.2188C14 10.9062 12.0938 9 9.78125 9Z" fill="#817F7F"/>
+                                        </svg>              
+                                    </div>
+                                    <input style="height: 50px; border-right: 1px solid #DADADA; border-bottom: 1px solid #DADADA; border-top: 1px solid #DADADA; border-top-left-radius: 0px; border-bottom-left-radius: 0px;
+                                border-left: none; border-top-right-radius: 5px; border-bottom-right-radius: 5px;" id="signin-email" name="email" type="email" class="form-control signin-email" placeholder="Email address" required="required">
+                            </div>
+                        </div><!--//form-group-->
+                        <div class="password mb-4">
+                            <div class="group-password">
+                                  <div class="block-icon" style="height: 50px; line-height: 45px; border-top-left-radius: 5px; border-bottom-left-radius: 5px; border-left: 1px solid #DADADA; border-top: 1px solid #DADADA; border-bottom: 1px solid #DADADA;">
+                                      <svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                          <path d="M12.5 7H11.75V4.75C11.75 2.15625 9.59375 0 7 0C4.375 0 2.25 2.15625 2.25 4.75V7H1.5C0.65625 7 0 7.6875 0 8.5V14.5C0 15.3438 0.65625 16 1.5 16H12.5C13.3125 16 14 15.3438 14 14.5V8.5C14 7.6875 13.3125 7 12.5 7ZM9.25 7H4.75V4.75C4.75 3.53125 5.75 2.5 7 2.5C8.21875 2.5 9.25 3.53125 9.25 4.75V7Z" fill="#817F7F"/>
+                                        </svg>                                        
+                                    </div>
+                                    <input type="password" name="password" style="height: 50px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-top-left-radius: 0px; border-bottom-left-radius: 0px; border-right: 1px solid #DADADA; border-bottom: 1px solid #DADADA; border-top: 1px solid #DADADA; border-left: none;" placeholder="Kata Sandi" class="form-control signin-email" autocomplete="current-password" required="" id="id_password">
+                                    <i class="far fa-eye" id="show-hide-password" style=" cursor: pointer;"></i>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="mb-3 text-center">
+                            <a class="forgot-password-form-login" href="../auth/signUp.html"> Belum memiliki akun ? Daftar Sekarang</a>
+                        </div>
+                        <div class="text-center">
+                           <a href="../index.html"><button type="submit" class=" text-color-white button-cs-login w-100 theme-btn mx-auto">Masuk</button></a> 
+                        </div>
+                    </form>
+                </div><!--//auth-form-container-->	
+
+            </div><!--//auth-body-->
+        
+            <footer class="app-auth-footer">
+                <div class="container text-center py-3">
+                     <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
+                <small class="copyright">© 2022 - 2023 Naira of Sneakers. All rights reserved</small>
+                
+                </div>
+            </footer><!--//app-auth-footer-->	
+        </div><!--//flex-column-->   
+    </div><!--//auth-main-col-->
+    <div class="col-12 col-md-5 col-lg-8 h-100 auth-background-col">
+            <div class="auth-background-holder">
+            </div>
+        <div class="auth-background-mask">
+            <div class="auth-text">
+                
+            </div>
+            <div class="logo">
+                <img src="../assets/image/img-footer.png" alt="">
+            </div>
+        </div>
+    </div><!--//auth-background-col-->
+
+</div><!--//row-->
+
+<script type="text/javascript" src="{{asset('assets/js/showPassword.js')}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>

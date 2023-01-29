@@ -1,0 +1,685 @@
+<?php
+include './controller/conn.php';
+?>
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Naira Sneakers</title>
+    <link rel="shortcut icon" href="assets/image/logo-naira-object.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+        integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+        integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+    <link rel="stylesheet" href="./assets/css/about.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top bg-light" id="top-nav">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="./assets/image/logo-naira.png" alt=""></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item" id="navitem">
+                        <a class="nav-custom" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item" id="navitem">
+                        <a class="nav-custom" href="#our-menu">Produk</a>
+                    </li>
+                    <li class="nav-item" id="navitem">
+                        <a class="nav-custom" href="menu.php">Kategori</a>
+                    </li>
+                </ul>
+                <span class="navbar-text">
+                    <a href="./auth/login.php"><button class="btn-auth-cs" id="btn-sign">Login</button></a>
+                </span>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="container">
+            <div class="col-md-12">
+                <div id="home" class="row">
+                    <div class="col-md-6 margin-top-banner">
+                        <h1 class="heading-h1-banner ">Jelajahi Dunia Kekinian Dengan Sepatu Kekinian</h1>
+                        <p class="paraf-p-banner mb-5">Tempatnya beli sepatu kekinian original dan juga telah terpercaya oleh berbagai kalangan anak muda
+
+                        </p>
+                        <div class="col-md-12 d-flex">
+                            <div class="col-6">
+                                <button type="submit" class="btn-shop-now">Shop Now</button>
+                            </div>
+                            <div class="col-6">
+                                <img src="./assets/image/img-rating.png" alt="rate">
+                               <p>Dipercaya Customer</p>
+                            </div>
+                        </div>
+                       
+                    </div>
+                    <div class="col-md-6">
+                        <img src="./assets/image/img-banner.png" class="image-banner" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-max-page">
+        <div class="row">
+            <div class="col-md-12 text-center mb-5">
+                <h2 class="heading-h2-cs-page">How To Order</h2>
+                <p class="paraf-p-follow">Follow our guide to make it easier for you to buy nutritious food and drinks
+                    with us</p>
+            </div>
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="card card-cs-background-green">
+                            <div class="card-body">
+                                <div class="group-middle-margin-card">
+                                    <div class="icon-svg mb-3">
+                                        <svg width="67" height="67" viewBox="0 0 67 67" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M25.125 33.5H41.875H25.125ZM25.125 44.6667H41.875H25.125ZM47.4583 58.625H19.5417C18.0609 58.625 16.6407 58.0368 15.5936 56.9897C14.5466 55.9426 13.9583 54.5225 13.9583 53.0417V13.9583C13.9583 12.4775 14.5466 11.0574 15.5936 10.0103C16.6407 8.96324 18.0609 8.375 19.5417 8.375H35.1359C35.8762 8.37516 36.5862 8.66938 37.1096 9.19296L52.2237 24.307C52.7473 24.8305 53.0415 25.5404 53.0417 26.2807V53.0417C53.0417 54.5225 52.4534 55.9426 51.4063 56.9897C50.3593 58.0368 48.9391 58.625 47.4583 58.625Z"
+                                                stroke="white" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                        </svg>
+                                    </div>
+                                    <h3 class="card-title-cs-green mb-3">Choose Menu</h3>
+                                    <p class="paraf-p-cs-order-detail-pay">Select the food or drink menu you want,
+                                        please enter it into yout shipping cart</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-1 text-center marleft-col-md-1">
+                        <div class="icon-right">
+                            <svg width="13" height="22" viewBox="0 0 13 22" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12.3594 11.7969C12.7812 11.375 12.7812 10.6719 12.3594 10.25L3.26562 1.10938C2.79688 0.6875 2.09375 0.6875 1.67188 1.10938L0.59375 2.1875C0.171875 2.60938 0.171875 3.3125 0.59375 3.78125L7.8125 11L0.59375 18.2656C0.171875 18.7344 0.171875 19.4375 0.59375 19.8594L1.67188 20.9375C2.09375 21.3594 2.79688 21.3594 3.26562 20.9375L12.3594 11.7969Z"
+                                    fill="white" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card card-cs-background-white">
+                            <div class="card-body">
+                                <div class="group-middle-margin-card">
+                                    <div class="icon-svg mb-3">
+                                        <svg width="67" height="67" viewBox="0 0 67 67" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8.375 27.9166H58.625H8.375ZM19.5417 41.875H22.3333H19.5417ZM33.5 41.875H36.2917H33.5ZM16.75 53.0416H50.25C52.4712 53.0416 54.6014 52.1593 56.172 50.5887C57.7426 49.018 58.625 46.8878 58.625 44.6666V22.3333C58.625 20.1121 57.7426 17.9819 56.172 16.4113C54.6014 14.8407 52.4712 13.9583 50.25 13.9583H16.75C14.5288 13.9583 12.3986 14.8407 10.828 16.4113C9.25736 17.9819 8.375 20.1121 8.375 22.3333V44.6666C8.375 46.8878 9.25736 49.018 10.828 50.5887C12.3986 52.1593 14.5288 53.0416 16.75 53.0416Z"
+                                                stroke="#1300bb" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                        </svg>
+                                    </div>
+                                    <h3 class="card-title-cs`-white mb-3">Checkout Order</h3>
+                                    <p class="paraf-p-cs-order-detail-pay-white">Orders that are in your shopping cart now just do checkout,to be ready for processing</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-1 text-center marleft-col-md-1">
+                        <div class="icon-right-white">
+                            <svg width="15" height="28" viewBox="0 0 15 28" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M13.3594 14.7969C13.7812 14.375 13.7812 13.6719 13.3594 13.25L4.26562 4.10938C3.79688 3.6875 3.09375 3.6875 2.67188 4.10938L1.59375 5.1875C1.17188 5.60938 1.17188 6.3125 1.59375 6.78125L8.8125 14L1.59375 21.2656C1.17188 21.7344 1.17188 22.4375 1.59375 22.8594L2.67188 23.9375C3.09375 24.3594 3.79688 24.3594 4.26562 23.9375L13.3594 14.7969Z"
+                                    fill="white" />
+                            </svg>
+                        </div>
+
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card card-cs-background-white">
+                            <div class="card-body">
+                                <div class="group-middle-margin-card">
+                                    <div class="icon-svg mb-3">
+                                        <svg width="67" height="67" viewBox="0 0 67 67" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8.375 8.375H13.9583L15.075 13.9583L8.375 8.375ZM19.5417 36.2917H47.4583L58.625 13.9583H15.075L19.5417 36.2917ZM19.5417 36.2917L15.075 13.9583L19.5417 36.2917ZM19.5417 36.2917L13.1404 42.693C11.3816 44.4517 12.6267 47.4583 15.1141 47.4583H47.4583L19.5417 36.2917ZM47.4583 47.4583C45.9775 47.4583 44.5574 48.0466 43.5103 49.0937C42.4632 50.1407 41.875 51.5609 41.875 53.0417C41.875 54.5225 42.4632 55.9426 43.5103 56.9897C44.5574 58.0368 45.9775 58.625 47.4583 58.625C48.9391 58.625 50.3593 58.0368 51.4063 56.9897C52.4534 55.9426 53.0417 54.5225 53.0417 53.0417C53.0417 51.5609 52.4534 50.1407 51.4063 49.0937C50.3593 48.0466 48.9391 47.4583 47.4583 47.4583ZM25.125 53.0417C25.125 54.5225 24.5368 55.9426 23.4897 56.9897C22.4426 58.0368 21.0225 58.625 19.5417 58.625C18.0609 58.625 16.6407 58.0368 15.5937 56.9897C14.5466 55.9426 13.9583 54.5225 13.9583 53.0417C13.9583 51.5609 14.5466 50.1407 15.5937 49.0937C16.6407 48.0466 18.0609 47.4583 19.5417 47.4583C21.0225 47.4583 22.4426 48.0466 23.4897 49.0937C24.5368 50.1407 25.125 51.5609 25.125 53.0417V53.0417Z"
+                                                stroke="#1300bb" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                        </svg>
+                                    </div>
+                                    <h3 class="card-title-cs`-white mb-3">Wait for Delivery</h3>
+                                    <p class="paraf-p-cs-order-detail-pay-white">SSo from here we are ready to prepare and delivery orders to your residence</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container margin-top-banner" id="about>
+      <div class=" row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="./assets/image/image-about.png" class="image-about" alt="">
+                </div>
+                <div class="col-md-6">
+                    <h3 class="title-about-h3 mb-4">Tentang Kami</h3>
+                    <h1 class="heading-about-h1 mb-4">We Believe In working with accredited chefs</h1>
+                    <p class="paraf-cs-about mb-4">We are a restaurant that provides a varlety of food and baverages of
+                        the highest quality through a process of manufacture by experts and a professional way by
+                        ultilizing high technology and high quality food ingridients and this is all prepared only for
+                        our customers.</p>
+                    <div class="d-flex flex-row mb-3">
+                        <div class="p-4 text-center">
+                            <h5 class="title-h5-count">28+</h5>
+                            <p class="paraf-p-count">Chef</p>
+                        </div>
+                        <div class="p-4 text-center">
+                            <h5 class="title-h5-count">538+</h5>
+                            <p class="paraf-p-count">Employee</p>
+                        </div>
+                        <div class="p-4 text-center">
+                            <h5 class="title-h5-count">9</h5>
+                            <p class="paraf-p-count">Branch</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+    <section id="our-menu" class="our-menu">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 ">
+                    <div class="row text-center">
+                        <div class="col-md-12 text-center margin-botom-cs-menu-our-menu">
+                            <h1 class="heading-our-menu-h1-cs">Produk Spesial Kami</h1>
+                            <ul class="nav">
+                                <li class="nav-item" id="navitem">
+                                    <a class="nav-link btn-our-menu" href="#">Terlaris saat ini</a>
+                                </li>
+                                <li class="nav-item" id="navitem">
+                                    <a class="nav-link btn-our-menu" href="#">Adidas</a>
+                                </li>
+                                <li class="nav-item" id="navitem">
+                                    <a class="nav-link btn-our-menu" href="#">Compas</a>
+                                </li>
+                                <li class="nav-item" id="navitem">
+                                    <a class="nav-link btn-our-menu" href="#">Nike</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 margin-b-width">
+                            <div class="card card-our-menu">
+                                <div class="oval-image">
+                                    <img src="./assets/image/img-product.png"
+                                        style="width:100%;" class="img-card-out-menu" alt="">
+                                </div>
+                                <div class="card-body">
+                                    <div class="col-12 d-flex"> 
+                                        <h1 class="label-product d-flex ">Giannis Immortality 2</h1>
+                                        <p class="label-brand">Compas</p>
+                                        
+                                    </div>  
+
+                                        <!-- <?php echo $datas['nama_produk']; ?> -->
+                                        <h5 class="price-our-menu d-flex">Size : <span class="number-price">
+                                            <p class="text-size">38/40/42</p>
+                                                <!-- <?php echo $datas['harga']; ?> -->
+                                            </span></h5>
+                                    
+                                    <p></p>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h5 class="price-our-menu d-flex">Rp <span class="number-price">
+                                                <p class="text-price"> 1.200.000</p>
+                                                    <!-- <?php echo $datas['harga']; ?> -->
+                                                </span></h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-6">
+                                    <img src="./assets/image/image-small/rate-3.svg" class="rating" alt="">
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="col-md-4 margin-b-width">
+                            <div class="card card-our-menu">
+                                <div class="oval-image">
+                                    <img src="./assets/image/img-product.png"
+                                        style="width:100%;" class="img-card-out-menu" alt="">
+                                </div>
+                                <div class="card-body">
+                                    <div class="col-12 d-flex"> 
+                                        <h1 class="label-product d-flex ">Giannis Immortality 2</h1>
+                                        <p class="label-brand">Compas</p>
+                                        
+                                    </div>  
+
+                                        <!-- <?php echo $datas['nama_produk']; ?> -->
+                                        <h5 class="price-our-menu d-flex">Size : <span class="number-price">
+                                            <p class="text-size">38/40/42</p>
+                                                <!-- <?php echo $datas['harga']; ?> -->
+                                            </span></h5>
+                                    
+                                    <p></p>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h5 class="price-our-menu d-flex">Rp <span class="number-price">
+                                                <p class="text-price"> 1.200.000</p>
+                                                    <!-- <?php echo $datas['harga']; ?> -->
+                                                </span></h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-6">
+                                    <img src="./assets/image/image-small/rate-3.svg" class="rating" alt="">
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="col-md-4 margin-b-width">
+                            <div class="card card-our-menu">
+                                <div class="oval-image">
+                                    <img src="./assets/image/img-product.png"
+                                        style="width:100%;" class="img-card-out-menu" alt="">
+                                </div>
+                                <div class="card-body">
+                                    <div class="col-12 d-flex"> 
+                                        <h1 class="label-product d-flex ">Giannis Immortality 2</h1>
+                                        <p class="label-brand">Compas</p>
+                                        
+                                    </div>  
+
+                                        <!-- <?php echo $datas['nama_produk']; ?> -->
+                                        <h5 class="price-our-menu d-flex">Size : <span class="number-price">
+                                            <p class="text-size">38/40/42</p>
+                                                <!-- <?php echo $datas['harga']; ?> -->
+                                            </span></h5>
+                                    
+                                    <p></p>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h5 class="price-our-menu d-flex">Rp <span class="number-price">
+                                                <p class="text-price"> 1.200.000</p>
+                                                    <!-- <?php echo $datas['harga']; ?> -->
+                                                </span></h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-6">
+                                    <img src="./assets/image/image-small/rate-3.svg" class="rating" alt="">
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 ">
+                    <div class="row text-center">
+                        <div class="col-md-4 margin-b-width">
+                            <div class="card card-our-menu">
+                                <div class="oval-image">
+                                    <img src="./assets/image/img-product.png"
+                                        style="width:100%;" class="img-card-out-menu" alt="">
+                                </div>
+                                <div class="card-body">
+                                    <div class="col-12 d-flex"> 
+                                        <h1 class="label-product d-flex ">Giannis Immortality 2</h1>
+                                        <p class="label-brand">Compas</p>
+                                        
+                                    </div>  
+
+                                        <!-- <?php echo $datas['nama_produk']; ?> -->
+                                        <h5 class="price-our-menu d-flex">Size : <span class="number-price">
+                                            <p class="text-size">38/40/42</p>
+                                                <!-- <?php echo $datas['harga']; ?> -->
+                                            </span></h5>
+                                    
+                                    <p></p>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h5 class="price-our-menu d-flex">Rp <span class="number-price">
+                                                <p class="text-price"> 1.200.000</p>
+                                                    <!-- <?php echo $datas['harga']; ?> -->
+                                                </span></h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-6">
+                                    <img src="./assets/image/image-small/rate-3.svg" class="rating" alt="">
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="col-md-4 margin-b-width">
+                            <div class="card card-our-menu">
+                                <div class="oval-image">
+                                    <img src="./assets/image/img-product.png"
+                                        style="width:100%;" class="img-card-out-menu" alt="">
+                                </div>
+                                <div class="card-body">
+                                    <div class="col-12 d-flex"> 
+                                        <h1 class="label-product d-flex ">Giannis Immortality 2</h1>
+                                        <p class="label-brand">Compas</p>
+                                        
+                                    </div>  
+
+                                        <!-- <?php echo $datas['nama_produk']; ?> -->
+                                        <h5 class="price-our-menu d-flex">Size : <span class="number-price">
+                                            <p class="text-size">38/40/42</p>
+                                                <!-- <?php echo $datas['harga']; ?> -->
+                                            </span></h5>
+                                    
+                                    <p></p>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h5 class="price-our-menu d-flex">Rp <span class="number-price">
+                                                <p class="text-price"> 1.200.000</p>
+                                                    <!-- <?php echo $datas['harga']; ?> -->
+                                                </span></h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-6">
+                                    <img src="./assets/image/image-small/rate-3.svg" class="rating" alt="">
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="col-md-4 margin-b-width">
+                            <div class="card card-our-menu">
+                                <div class="oval-image">
+                                    <img src="./assets/image/img-product.png"
+                                        style="width:100%;" class="img-card-out-menu" alt="">
+                                </div>
+                                <div class="card-body">
+                                    <div class="col-12 d-flex"> 
+                                        <h1 class="label-product d-flex ">Giannis Immortality 2</h1>
+                                        <p class="label-brand">Compas</p>
+                                        
+                                    </div>  
+
+                                        <!-- <?php echo $datas['nama_produk']; ?> -->
+                                        <h5 class="price-our-menu d-flex">Size : <span class="number-price">
+                                            <p class="text-size">38/40/42</p>
+                                                <!-- <?php echo $datas['harga']; ?> -->
+                                            </span></h5>
+                                    
+                                    <p></p>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h5 class="price-our-menu d-flex">Rp <span class="number-price">
+                                                <p class="text-price"> 1.200.000</p>
+                                                    <!-- <?php echo $datas['harga']; ?> -->
+                                                </span></h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-6">
+                                    <img src="./assets/image/image-small/rate-3.svg" class="rating" alt="">
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h1 class="heading-testimonial-h1-cs">Testimonial</h1>
+                        <p class="paraf-cs-testimonial-p-cs mb-4">All my customers are very satisfied see their reviews
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card card-cs-testimonial">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="group-profile-testimonial">
+                                            <div class="profile-image">
+                                                <img src="./assets/image/profile-1.png"
+                                                    class="img-profile-testimonial" alt="">
+                                            </div>
+                                            <div class="name-profile">
+                                                <h5 class="title-name-testimonial">Hans</h5>
+                                                <p class="paraf-name-testimonial">UI & UX</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="date-testimonial">
+                                            <p class="text-date-testimonial">12/02/2022</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <p class="message-testimonial">““Sepatu disini semuanya original, dan memesan sepatu disini juga tidak ribet, dengan adanya naira membeli sepatu ori lebih mudah””</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card card-cs-testimonial">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="group-profile-testimonial">
+                                            <div class="profile-image">
+                                                <img src="./assets/image/profile-2.png"
+                                                    class="img-profile-testimonial" alt="">
+                                            </div>
+                                            <div class="name-profile">
+                                                <h5 class="title-name-testimonial">Dimas</h5>
+                                                <p class="paraf-name-testimonial">Programmer</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="date-testimonial">
+                                            <p class="text-date-testimonial">12/02/2022</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <p class="message-testimonial">““Sepatu disini semuanya original, dan memesan sepatu disini juga tidak ribet, dengan adanya naira membeli sepatu ori lebih mudah””</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="card card-cs-testimonial">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="group-profile-testimonial">
+                                            <div class="profile-image">
+                                                <img src="./assets/image/profile-3.png"
+                                                    class="img-profile-testimonial" alt="">
+                                            </div>
+                                            <div class="name-profile">
+                                                <h5 class="title-name-testimonial">Rahman</h5>
+                                                <p class="paraf-name-testimonial">Programmer</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="date-testimonial">
+                                            <p class="text-date-testimonial">12/02/2022</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <p class="message-testimonial">““Sepatu disini semuanya original, dan memesan sepatu disini juga tidak ribet, dengan adanya naira membeli sepatu ori lebih mudah””</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Remove the container if you want to extend the Footer to full width. -->
+
+    <footer class="footer text-center text-lg-start text-white">
+        <div class="container">
+            <!-- Grid container -->
+            <div class="container p-4">
+                <!--Grid row-->
+                <div class="row mt-4">
+                    <!--Grid column-->
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                        <h5 class="text-uppercase"><img src="./assets/image/img-footer.png" alt=""></h5>
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                        <h5 class="text-heading-footer">Site Map</h5>
+
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="#!" class="text-white text-footer-cs-link">Home</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white text-footer-cs-link">Product</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white text-footer-cs-link">Kategori</a>
+                            </li>
+                           
+                        </ul>
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                        <h5 class="text-heading-footer">Brand</h5>
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="#!" class="text-white text-footer-cs-link">Vans</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white text-footer-cs-link">Nike</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white text-footer-cs-link">Adidas</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white text-footer-cs-link">Ortuseight</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                        <h5 class="text-heading-footer">Media Social</h5>
+
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="#!" class="text-white text-footer-cs-link">Instagram : Nairasneakers</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white text-footer-cs-link">Facebook : Nairasneakers</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white text-footer-cs-link">Whatsapp : 08832012846</a>
+                            </li>
+                            <li>
+                                <div class="group-icon-medsos">
+                                    <a href="#!" class="icon-medsos-fb">i</a>
+                                    <a href="#!" class="icon-medsos">i</a>
+                                    <a href="#!" class="icon-medsos">i</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--Grid column-->
+                    <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                        <h5 class="text-heading-footer">Address</h5>
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="#!" class="text-white text-footer-cs-link">Jalan Kiyai ahmad dahlan no 13 Kab.Bogor Jawa Barat</a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+                <!--Grid row-->
+            </div>
+            <!-- Grid container -->
+
+            <!-- Copyright -->
+            <!-- Copyright -->
+        </div>
+        <div class="text-center text-footer-cs-link p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+            
+            <a class="text-white" href="#">Copyright 2023 | Naira - HD</a>
+        </div>
+    </footer>
+
+    <!-- End of .container -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./assets/js/scroll.js" type="text/javascript"></script>
+    <script src="./assets/js/action-navbar.js" type="text/javascript"></script>
+    <script src="./assets/js/navbar.js" type="text/javascript"></script>
+    <script src="./assets/js/action-button.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+        integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
