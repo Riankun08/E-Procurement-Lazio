@@ -44,16 +44,6 @@ Route::prefix('admin')->name('admin.')->group(function() {
             Route::delete('/products/destroy/{id}', 'destroy')->name('products.destroy');
         });
 
-        Route::controller(App\Http\Controllers\Admin\SizeController::class)->group(function () {
-            Route::get('/sizes', 'index')->name('sizes.index');
-            Route::get('/sizes/create', 'create')->name('sizes.create');
-            Route::post('/sizes/create/store', 'store')->name('sizes.store');
-            Route::get('/sizes/edit/{id}', 'edit')->name('sizes.edit');
-            Route::put('/sizes/edit/update/{id}', 'update')->name('sizes.update');
-            Route::get('/sizes/show/{id}', 'show')->name('sizes.show');
-            Route::delete('/sizes/destroy/{id}', 'destroy')->name('sizes.destroy');
-        });
-
         Route::controller(App\Http\Controllers\Admin\TestimonialController::class)->group(function () {
             Route::get('/testimonials', 'index')->name('testimonials.index');
             Route::get('/testimonials/create', 'create')->name('testimonials.create');
@@ -74,18 +64,18 @@ Route::prefix('admin')->name('admin.')->group(function() {
             Route::delete('/orders/destroy/{id}', 'destroy')->name('orders.destroy');
         });
 
-        Route::controller(App\Http\Controllers\Admin\ColorController::class)->group(function () {
-            Route::get('/colors', 'index')->name('colors.index');
-            Route::get('/colors/create', 'create')->name('colors.create');
-            Route::post('/colors/create/store', 'store')->name('colors.store');
-            Route::get('/colors/edit/{id}', 'edit')->name('colors.edit');
-            Route::put('/colors/edit/update/{id}', 'update')->name('colors.update');
-            Route::get('/colors/show/{id}', 'show')->name('colors.show');
-            Route::delete('/colors/destroy/{id}', 'destroy')->name('colors.destroy');
-        });
-
         Route::controller(App\Http\Controllers\Admin\HotSaleController::class)->group(function () {
             Route::get('/hotSales', 'index')->name('hotSales.index');
+        });
+
+        Route::controller(App\Http\Controllers\Admin\NewsController::class)->group(function () {
+            Route::get('/news', 'index')->name('news.index');
+            Route::get('/news/create', 'create')->name('news.create');
+            Route::post('/news/create/store', 'store')->name('news.store');
+            Route::get('/news/edit/{id}', 'edit')->name('news.edit');
+            Route::put('/news/edit/update/{id}', 'update')->name('news.update');
+            Route::get('/news/show/{id}', 'show')->name('news.show');
+            Route::delete('/news/destroy/{id}', 'destroy')->name('news.destroy');
         });
 
     });

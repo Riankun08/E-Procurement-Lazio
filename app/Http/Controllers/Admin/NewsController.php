@@ -4,27 +4,30 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Contracts\Encryption\DecryptException;
 use RealRashid\SweetAlert\Facades\Alert;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Crypt;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\View;
 use Illuminate\Http\Request;
-use App\Models\Service;
+use App\Models\News;
+use Carbon\Carbon;
 
-class ServiceController extends Controller
+class NewsController extends Controller
 {
-    public $view = 'admin.service.';
-    public $route = 'admin.services.';
-    public $title = 'Service';
+    public $view = 'admin.news.';
+    public $route = 'admin.news.';
+    public $title = 'Data Berita';
     public $model;
+    protected $path = 'image-save/image-news/';
 
-     public function __construct(Service $model)
+     public function __construct(News $model)
     {
         $this->model = $model;
         View::share('title', $this->title);
         View::share('route', $this->route);
         View::share('view', $this->view);
+        View::share('path', $this->path);
+
     }
     /**
      * Display a listing of the resource.
@@ -33,8 +36,13 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $datas = $this->model->all();
-        return view($this->view.'index' , compact('datas'));
+        try {
+            $datas = $this->model->all();
+            return view($this->view.'index' , compact('datas'));
+        } catch (DecryptException $e) {
+            Alert::error('error!', 'validation url');
+            return back();
+        }
     }
 
     /**
@@ -44,7 +52,7 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        return view($this->view.'create');
+        return view($this->view.'create' );
     }
 
     /**
@@ -57,28 +65,31 @@ class ServiceController extends Controller
     {
         try {
             $input = $request->all();
-    
-            if($request->hasFile('icon')){
-                $filenameWithExt = $request->file('icon')->getClientOriginalName();
-                $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-                $extension = $request->file('icon')->getClientOriginalExtension();
-                $filenameSimpan = $filename.'_'.time().'.'.$extension;        
-                $path = $request->file('icon')->storeAs('public/image-service', $filenameSimpan);  
-            } else {
-                Alert::error('Create Failed!', 'Failed create data '.$this->title);
-                return back();
-            }
-    
-            $result = $this->model->create([
-                'name' => $input['name'],
-                'icon' => $filenameSimpan,
-                'description' => $input['description'],
+
+            $this->validate($request, [
+                'image' => 'file|image|mimes:jpeg,png,jpg',
             ]);
-    
+
+            if ($request->file('image')) {
+                $file = $request->file('image');
+                $nama_file = time()."_".$file->getClientOriginalName();
+                $tujuan_upload = $this->path;
+                $file->move($tujuan_upload,$nama_file);
+            }
+
+            $result = $this->model->create([
+                'title' => $input['title'],
+                'description' => $input['description'],
+                'theme' => $input['theme'],
+                'datePost' => Carbon::now(),
+                'image' => $nama_file,
+            ]);
+
             if($result){
                 Alert::success('Create Success!', 'Success create data '.$this->title);
                 return redirect()->route($this->route.'index');
             }
+
         } catch (DecryptException $e) {
             Alert::error('Create Failed!', 'Failed create data '.$this->title);
             return back();
@@ -94,7 +105,7 @@ class ServiceController extends Controller
     public function show($id)
     {
         $decryptID = Crypt::decryptString($id);
-        $data = $this->model->find($decryptID);
+        $data =  $this->model->find($decryptID);
         return view($this->view.'detail' , compact('data'));
     }
 
@@ -107,7 +118,7 @@ class ServiceController extends Controller
     public function edit($id)
     {
         $decryptID = Crypt::decryptString($id);
-        $data = $this->model->find($decryptID);
+        $data =  $this->model->find($decryptID);
         return view($this->view.'edit' , compact('data'));
     }
 
@@ -125,26 +136,32 @@ class ServiceController extends Controller
 
             $input = $request->all();
     
-            if($request->hasFile('icon')){
-                $filenameWithExt = $request->file('icon')->getClientOriginalName();
-                $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-                $extension = $request->file('icon')->getClientOriginalExtension();
-                $filenameSimpan = $filename.'_'.time().'.'.$extension;        
-                $path = $request->file('icon')->storeAs('public/image-service', $filenameSimpan);  
-                
-                $result = $this->model->find($decryptID)->update([
-                    'name' => $input['name'],
-                    'icon' => $filenameSimpan,
-                    'description' => $input['description'],
-                ]);
-
+            $this->validate($request, [
+                'image' => 'file|image|mimes:jpeg,png,jpg',
+            ]);
+    
+            if ($request->file('image')) {
+                $file = $request->file('image');
+                $nama_file = time()."_".$file->getClientOriginalName();
+                $tujuan_upload = $this->path;
+                $file->move($tujuan_upload,$nama_file);
             } else {
                 $result = $this->model->find($decryptID)->update([
-                    'name' => $input['name'],
+                    'title' => $input['title'],
                     'description' => $input['description'],
+                    'theme' => $input['theme'],
+                    'datePost' => Carbon::now(),
+                    'image' => $nama_file,
                 ]);
             }
-    
+
+            $result = $this->model->find($decryptID)->update([
+                'title' => $input['title'],
+                'description' => $input['description'],
+                'theme' => $input['theme'],
+                'datePost' => Carbon::now(),
+            ]);
+
             if($result){
                 Alert::success('Update Success!', 'Success Update data '.$this->title);
                 return redirect()->route($this->route.'index');

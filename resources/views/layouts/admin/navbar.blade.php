@@ -1,79 +1,27 @@
-<nav class="navbar navbar-expand-lg main-navbar">
-    <form class="form-inline mr-auto">
-      <ul class="navbar-nav mr-3">
-        <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
-        <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
-      </ul>
-      <div class="search-element">
-        <div class="search-backdrop"></div>
-        <div class="search-result">
-          <div class="search-header">
-            Histories
-          </div>
-          <div class="search-item">
-            <a href="#">How to hack NASA using CSS</a>
-            <a href="#" class="search-close"><i class="fas fa-times"></i></a>
-          </div>
-          <div class="search-item">
-            <a href="#">Kodinger.com</a>
-            <a href="#" class="search-close"><i class="fas fa-times"></i></a>
-          </div>
-          <div class="search-item">
-            <a href="#">#Stisla</a>
-            <a href="#" class="search-close"><i class="fas fa-times"></i></a>
-          </div>
-          <div class="search-header">
-            Result
-          </div>
-          <div class="search-item">
-            <a href="#">
-              <img class="mr-3 rounded" width="30" src="{{ asset('template/base-admin/dist/assets/img/products/product-3-50.png')}}" alt="product">
-              oPhone S9 Limited Edition
-            </a>
-          </div>
-          <div class="search-item">
-            <a href="#">
-              <img class="mr-3 rounded" width="30" src="{{ asset('template/base-admin/dist/assets/img/products/product-2-50.png')}}" alt="product">
-              Drone X2 New Gen-7
-            </a>
-          </div>
-          <div class="search-item">
-            <a href="#">
-              <img class="mr-3 rounded" width="30" src="{{ asset('template/base-admin/dist/assets/img/products/product-1-50.png')}}" alt="product">
-              Headphone Blitz
-            </a>
-          </div>
-          <div class="search-header">
-            Projects
-          </div>
-          <div class="search-item">
-            <a href="#">
-              <div class="search-icon bg-danger text-white mr-3">
-                <i class="fas fa-code"></i>
-              </div>
-              Stisla Admin Template
-            </a>
-          </div>
-          <div class="search-item">
-            <a href="#">
-              <div class="search-icon bg-primary text-white mr-3">
-                <i class="fas fa-laptop"></i>
-              </div>
-              Create a new Homepage Design
-            </a>
-          </div>
-        </div>
-      </div>
-    </form>
-    <ul class="navbar-nav navbar-right">
-      <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-        <img alt="image" src="{{ asset('template/base-admin/dist/assets/img/avatar/avatar-1.png')}}" class="rounded-circle mr-1">
-        <div class="d-sm-none d-lg-inline-block">{{ auth()->user()->name }}</div></a>
-        <div class="dropdown-menu dropdown-menu-right">
-          <a href="{{ route('admin.logout') }}" class="dropdown-item has-icon text-danger">
-            <i class="fas fa-sign-out-alt"></i> Logout
+<nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+  <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+    <a class="navbar-brand brand-logo mr-5" href="index.html"><img src="{{asset('template/base-admin-new/images/logo-apotek-hdn-vol-1.png')}}" class="mr-2" alt="logo"/></a>
+    <a class="navbar-brand brand-logo-mini" href="index.html"><img src="{{asset('template/base-admin-new/images/logo-apotek-hdn-removebg-preview.png')}}" alt="logo"/></a>
+  </div>
+  <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+    <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+      <span class="icon-menu"></span>
+    </button>
+    <ul class="navbar-nav navbar-nav-right">
+      <li class="nav-item nav-profile dropdown">
+        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
+          <img src="{{asset('template/base-admin-new/images/faces/face28.jpg')}}" alt="profile"/>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+          <a class="dropdown-item" href="{{ route('admin.logout') }}">
+            <i class="ti-power-off text-primary"></i>
+            Logout
           </a>
         </div>
       </li>
     </ul>
-  </nav>
+    <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+      <span class="icon-menu"></span>
+    </button>
+  </div>
+</nav>
