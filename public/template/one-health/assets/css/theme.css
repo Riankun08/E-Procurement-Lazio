@@ -8,7 +8,7 @@
  */
 
 :root {
-  --primary: #00D9A5;
+  --primary: #46b8d3;
   --accent: #FF3D85;
   --secondary: #4E5AFE;
   --warning: #EED818;
@@ -268,7 +268,7 @@ a.text-dark:hover, a.text-dark:focus {
 /* Buttons */
 .btn-primary {
   color: #fff;
-  background-color: #00D9A5;
+  background-color: #46b8d3;
   border-color: transparent;
 }
 

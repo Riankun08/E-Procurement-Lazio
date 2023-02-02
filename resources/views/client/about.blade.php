@@ -26,7 +26,7 @@
 
   <div class="page-section bg-light">
     <div class="container">
-      <div class="row">
+      <div class="row justify-content-center text-center">
         <div class="col-md-4 py-3 wow zoomIn">
           <div class="card-service">
             <div class="circle-shape bg-secondary text-white">
