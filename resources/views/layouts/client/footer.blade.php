@@ -1,98 +1,49 @@
+<footer class="page-footer">
+    <div class="container">
+      <div class="row px-md-3">
+        <div class="col-sm-6 col-lg-3 py-3">
+          <h5>Perusahaan</h5>
+          <ul class="footer-menu">
+            <li><a href="#">Tentang</a></li>
+            <li><a href="#">Berita</a></li>
+            <li><a href="#">Kontak</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-6 col-lg-3 py-3">
+          <h5>Menu</h5>
+          <ul class="footer-menu">
+            <li><a href="#">Beranda</a></li>
+            <li><a href="#">Tentang</a></li>
+            <li><a href="#">Produk</a></li>
+            <li><a href="#">Berita</a></li>
+            <li><a href="#">Kontak</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-6 col-lg-3 py-3">
+          <h5>Produk</h5>
+          <ul class="footer-menu">
+            <li><a href="#">One-Fitness</a></li>
+            <li><a href="#">One-Drugs</a></li>
+            <li><a href="#">One-Live</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-6 col-lg-3 py-3">
+          <h5>Contact</h5>
+          <p class="footer-link mt-2">351 Willow Street Franklin, MA 02038</p>
+          <a href="#" class="footer-link">701-573-7582</a>
+          <a href="#" class="footer-link">healthcare@temporary.net</a>
 
-    <footer class="footer text-center text-lg-start text-white">
-      <div class="container">
-          <!-- Grid container -->
-          <div class="container p-4">
-              <!--Grid row-->
-              <div class="row mt-4">
-                  <!--Grid column-->
-                  <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                      <h5 class="text-uppercase"><img src="{{asset('template/base-website/assets/image/img-footer.png')}}" alt=""></h5>
-                  </div>
-                  <!--Grid column-->
-
-                  <!--Grid column-->
-                  <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
-                      <h5 class="text-heading-footer">Site Map</h5>
-
-                      <ul class="list-unstyled">
-                          <li>
-                              <a href="#!" class="text-white text-footer-cs-link">Home</a>
-                          </li>
-                          <li>
-                              <a href="#!" class="text-white text-footer-cs-link">Product</a>
-                          </li>
-                          <li>
-                              <a href="#!" class="text-white text-footer-cs-link">Testimonial</a>
-                          </li>
-                         
-                      </ul>
-                  </div>
-                  <!--Grid column-->
-
-                  <!--Grid column-->
-                  <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
-                      <h5 class="text-heading-footer">Brand</h5>
-                      <ul class="list-unstyled">
-                          <li>
-                              <a href="#!" class="text-white text-footer-cs-link">Vans</a>
-                          </li>
-                          <li>
-                              <a href="#!" class="text-white text-footer-cs-link">Nike</a>
-                          </li>
-                          <li>
-                              <a href="#!" class="text-white text-footer-cs-link">Adidas</a>
-                          </li>
-                          <li>
-                              <a href="#!" class="text-white text-footer-cs-link">Ortuseight</a>
-                          </li>
-                      </ul>
-                  </div>
-                  <!--Grid column-->
-
-                  <!--Grid column-->
-                  <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                      <h5 class="text-heading-footer">Media Social</h5>
-
-                      <ul class="list-unstyled">
-                          <li>
-                              <a href="#!" class="text-white text-footer-cs-link">Instagram : Nairasneakers</a>
-                          </li>
-                          <li>
-                              <a href="#!" class="text-white text-footer-cs-link">Facebook : Nairasneakers</a>
-                          </li>
-                          <li>
-                              <a href="#!" class="text-white text-footer-cs-link">Whatsapp : 08832012846</a>
-                          </li>
-                          <li>
-                              <div class="group-icon-medsos">
-                                  <a href="#!" class="icon-medsos"><i class="fab fa-facebook-f"></i></a>
-                                  <a href="#!" class="icon-medsos"><i class="fab fa-instagram"></i></a>
-                                  <a href="#!" class="icon-medsos"><i class="fab fa-whatsapp"></i></a>
-                              </div>
-                          </li>
-                      </ul>
-                  </div>
-                  <!--Grid column-->
-                  <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
-                      <h5 class="text-heading-footer">Address</h5>
-                      <ul class="list-unstyled">
-                          <li>
-                              <a href="#!" class="text-white text-footer-cs-link">Jalan Kiyai ahmad dahlan no 13 Kab.Bogor Jawa Barat</a>
-                          </li>
-                          
-                      </ul>
-                  </div>
-              </div>
-              <!--Grid row-->
+          <h5 class="mt-3">Meida Sosial</h5>
+          <div class="footer-sosmed mt-3">
+            <a href="#" target="_blank"><span class="mai-logo-facebook-f"></span></a>
+            <a href="#" target="_blank"><span class="mai-logo-twitter"></span></a>
+            <a href="#" target="_blank"><span class="mai-logo-instagram"></span></a>
           </div>
-          <!-- Grid container -->
+        </div>
+      </div>
 
-          <!-- Copyright -->
-          <!-- Copyright -->
-      </div>
-      <div class="text-center text-footer-cs-link p-3" style="background-color: rgba(0, 0, 0, 0.2)">
-          
-          <a class="text-white" href="#">Copyright 2023 | Naira - HD</a>
-      </div>
+      <hr>
+
+      <p id="copyright">Copyright &copy; 2023 <a href="https://macodeid.com/" target="_blank">HDN Apotek </a>. All right reserved</p>
+    </div>
   </footer>

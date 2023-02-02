@@ -33,10 +33,28 @@ class LandingPageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function question()
+    public function about()
     {
-        $consultation = Consultation::all();
-        return view('client.questionDetail' , compact('consultation'));
+        $title = "Tentang Kami";
+        return view('client.about' , compact('title'));
+    }
+
+    public function news()
+    {
+        $title = "Berita";
+        return view('client.news' , compact('title'));
+    }
+
+    public function product()
+    {
+        $title = "Produk";
+        return view('client.product' , compact('title'));
+    }
+
+    public function contact()
+    {
+        $title = "Kontak";
+        return view('client.contact' , compact('title'));
     }
 
     /**

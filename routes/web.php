@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 Route::controller(App\Http\Controllers\Client\LandingPageController::class)->group(function () {
     Route::get('/', 'index')->name('client.landing');
+    Route::get('/abouts', 'about')->name('client.abouts');
+    Route::get('/products', 'product')->name('client.products');
+    Route::get('/contacts', 'contact')->name('client.contacts');
+    Route::get('/news', 'news')->name('client.news');
 });
 
 Route::controller(App\Http\Controllers\Client\AuthController::class)->group(function () {
@@ -25,7 +29,7 @@ Route::controller(App\Http\Controllers\Client\AuthController::class)->group(func
 
 Route::group(['middleware' => ['customer.auth']], function(){
     Route::controller(App\Http\Controllers\Client\LandingPageController::class)->group(function () {
-        Route::get('/OpenShop', 'index')->name('client.landing.log');
+        Route::get('/open-shop', 'index')->name('client.landing.log');
         Route::get('/question', 'question')->name('client.question');
         Route::get('/question/detail/{id}', 'questionShow')->name('client.questionShow');
         Route::post('/comment/store', 'storeComment')->name('client.comment.store');
