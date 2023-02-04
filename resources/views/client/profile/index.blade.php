@@ -1,383 +1,163 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Naira Sneakers</title>
-    <link rel="shortcut icon" href="{{asset('template/base-website/assets/image/logo-naira-object.png')}}">
-    
-    <link rel="stylesheet" href="{{asset('template/base-website/assets/css/style.css')}}">
-    <link rel="stylesheet" href="{{asset('template/base-website/assets/css/detail.css')}}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-        <style>
-            .margin-top-banner {
-                margin-top: 150px;
-            }
-            .margin-bottom-0 {
-                margin-bottom: 0px;
-            }
-        </style>
+    @include('layouts.client.head')
 </head>
-
 <body>
-  @include('sweetalert::alert')
-    <nav class="navbar navbar-expand-lg fixed-top bg-light" id="top-nav">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarText">
-                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                    <li class="nav-item" id="navitem">
-                        <a class="nav-custom" href="#home"><img src="{{asset('template/base-website/assets/image/logo-naira.png')}}" alt=""></a>
-                    </li>
-                </ul>
-                @if(@auth('customer')->user()->role == "customer") 
-                <div class="dropdown">
-                    <button class="button-auth-nav"><i class="fas fa-user"></i> {{ auth('customer')->user()->name }}</button>
-                    <div class="dropdown-content">
-                    <a href="{{ route('client.profile' , Crypt::encryptString(auth('customer')->user()->id)) }}">Profile</a>
-                    <a href="{{ route('client.logout') }}">Keluar</a>
-                    </div>
-                  </div>
-                    @else
-                    <span class="navbar-text">
-                    <a href="{{ route('client.login') }}"><button class="btn-auth-cs" id="btn-sign">Login</button></a>
-                    </span>
-                    @endif
-            </div>
-        </div>
-    </nav>
 
+  <!-- Back to top button -->
+  <div class="back-to-top"></div>
+
+  @include('layouts.client.navbar')
+
+  <div class="page-banner overlay-dark bg-image" style="background-image: url('{{asset('template/one-health/assets/img/bg_image_1.jpg')}}');">
+    <div class="banner-section">
+      <div class="container text-center wow fadeInUp">
+        <nav aria-label="Breadcrumb">
+          <ol class="breadcrumb breadcrumb-dark bg-transparent justify-content-center py-0 mb-2">
+            <li class="breadcrumb-item"><a href="index.html">Beranda</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Profil</li>
+          </ol>
+        </nav>
+        <h1 class="font-weight-normal">Profil {{auth('customer')->user()->name}}</h1>
+      </div> <!-- .container -->
+    </div> <!-- .banner-section -->
+  </div> <!-- .page-banner -->
+
+  <div class="page-section">
     <div class="container">
-        <div class="row margin-top-banner margin-bottom-banner">
-            <div class="col-md-12 mb-4">
-                <span class="breakpoint-cs"><a href="{{ route('client.landing.log') }}">Home</a> / <span class="litle-breakpoint-cs fw-bold">Profil</span></span>
-            </div>
+      <div class="row">
+        <div class="col-lg-8">
+        <div class="page-section">
+            <div class="container">
+            <h1 class="text-center wow fadeInUp">Data Profil Anda</h1>
             <div class="row">
-                <div class="col-md-12">
-                    <div class="row">
-                        <div class="col-12 col-md-4">
-                            <div class="card-cs-profil">
-                                <img src="{{asset('image-save/image-user/' . auth('customer')->user()->image)}}" class="img-profil mb-5" alt="">
-                                <form action="{{ route('client.profile.update' , Crypt::encryptString(auth('customer')->user()->id)) }}" method="POST" enctype="multipart/form-data">
-                                    @csrf
-                                    <div class="card-body">
-                                        <div class="grop-form">
-                                            <div class="mb-4 text-profil">
-                                                <input type="text" class="form-control p-3" name="name" placeholder="Nama Lengkap" value="{{ auth('customer')->user()->name }}" required>
-                                        </div>
-                                        <div class="mb-4 text-profil">
-                                            <input type="email" class="form-control p-3" name="email" placeholder="Email" value="{{ auth('customer')->user()->email }}" required>
-                                          </div>
-                                          <div class="mb-4 text-profil">
-                                            <input type="number" class="form-control p-3" name="phone" placeholder="No HP" value="{{ auth('customer')->user()->phone }}" required>
-                                          </div>
-                                          <div class="text-profil mb-4">
-                                              <select class="form-control p-3" name="gender" required>
-                                                  <option value="Laki - Laki" {{ @$data->gender == 'Laki - Laki' ? 'selected' : '' }}>Laki - laki</option>
-                                                  <option value="Perempuan" {{ @$data->gender == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
-                                                </select>
-                                            </div>
-                                            <div class="mb-4 text-profil">
-                                              <input type="file" class="form-control p-3" name="image" required value="{{ auth('customer')->user()->image }}">
-                                            </div>
-                                            <div class="mb-4 text-profil">
-                                            <input type="password" name="password" class="form-control p-3" required placeholder="Password">
-                                        </div>
-                                        <div class="mb-3">
-                                            <button type="submit" class="btn btn-cs-profil" style="color: #fff;" >Edit</button>
-                                        </div>
-                                    </div>
-                                    </div>
-                                </form>
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div>
-                                    <p class="paragraf-font-3 f-700 app-black">Histori Pembelian</p>
-                                </div>
-                                @foreach ($orderUser as $data)                                    
-                                <div class="card-cs-histori mb-3">
-                                    <img src="{{ asset('image-save/image-product/' . @$data->product->image) }}" class="img-histori mx-3 my-3" alt="">
-                                    <div class="card-body">
-                                        <div class="grop-text">
-                                            <div class="text-sukses">
-                                                <div>
-                                                    <p class="paragraf-font-6 f-600 app-dark-1 mb-1">{{ @$data->product->brand }}</p>
-                                                </div>
-                                                <div class="text-cs">
-                                                    @if(@$data->status == "newOrder")
-                                                    <label class="label-new">
-                                                        Menunggu
-                                                    </label>
-                                                    @elseif(@$data->status == "payOrder")
-                                                    <label class="label-pay">
-                                                        Bayar
-                                                    </label>
-                                                    @elseif(@$data->status == "paidOrder")
-                                                    <label class="label-paid">
-                                                        Terbayar
-                                                    </label>
-                                                    @elseif(@$data->status == "packingOrder")
-                                                    <label class="label-delivery">
-                                                        Dikemas
-                                                    </label>
-                                                    @elseif(@$data->status == "deliveryOrder")
-                                                    <label class="label-delivery">
-                                                        Diantar
-                                                    </label>
-                                                    @elseif(@$data->status == "successOrder")
-                                                    <label class="label-success">
-                                                        Suksess
-                                                    </label>
-                                                    @elseif(@$data->status == "failedOrder")
-                                                    <label class="label-failed">
-                                                        Gagal
-                                                    </label>
-                                                    @endif
-                                                </div>
-                                            </div>
-                                            <p class="paragraf-font-3 f-700 app-black margin-bottom-0">{{ @$data->product->name }}</p>
-                                            <p class="paragraf-font-6 f-500 app-dark-2 margin-bottom-0">Jumlah pesanan : <span class="paragraf-font-6 app-black f-700">{{ @$data->quantity }} Produk</span>
-                                                 Ukuran : <span class="paragraf-font-6 f-700 app-dark-1">{{ @$data->size->size }}</span> Warna : <span class="paragraf-font-6 f-700 app-dark-1">{{ @$data->color->colorName }}</span></p>
-                                            <p class="paragraf-font-4 app-gray margin-bottom-0">Rp <span class="paragraf-font-1 app-gray f-700">{{ number_format(@$data->totalPrice) }},-</span> 
-                                            @if(@$data->status == "payOrder") 
-                                                <button class="transfer-bank" title="klik dan lakukan pembayaran" type="button" data-bs-toggle="modal" data-bs-target="#paynow{{ @$data->id }}">Bayar</button>
-                                            @endif
-                                            @if(@$data->status == "deliveryOrder") 
-                                                <button class="transfer-bank" title="klik jika pesanan sudah sampai" type="button" data-bs-toggle="modal" data-bs-target="#confirm{{ @$data->id }}">konfirmasi</button>
-                                            @endif
-                                            @if(@$data->status == "successOrder") 
-                                                <button class="transfer-bank" title="klik untuk komentar" type="button" data-bs-toggle="modal" data-bs-target="#comment{{ @$data->id }}">komentar</button>
-                                            @endif
-                                            <button class="transfer-bank" title="klik untuk Cek Struk" type="button" data-bs-toggle="modal" data-bs-target="#struck{{ @$data->id }}">Cek Struk</button>
-                                            <span class="text-payment">{{ @$data->payment }}</span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                @endforeach
-                        </div>
-                    </div>
-                    </div>
+                <div class="col-md-12 text-center">
+                    @if(auth('customer')->user()->image != NULL)
+                    <img src="{{ asset('image-save/image-user/' . auth('customer')->user()->image  ) }}" class="image-width-profile" alt="Gambar Profil">
+                    @else
+                    <img src="{{ asset('image-save/famale-profile.svg')}}" alt="Gambar Profil" class="image-width-profile">
+                    @endif
                 </div>
+            </div>
+
+            <form class="contact-form mt-5" method="POST" action="{{ route('client.profile.update' , Crypt::encryptString(auth('customer')->user()->id)) }}">
+                @csrf
+                <div class="row mb-3">
+                <div class="col-sm-6 py-2 wow fadeInLeft">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" class="form-control" name="name" placeholder="Nama anda..." value="{{ auth('customer')->user()->name }}" required>
+                </div>
+                <div class="col-sm-6 py-2 wow fadeInRight">
+                    <label for="phone">No. Telpon</label>
+                    <input type="number" id="phone" class="form-control" name="phone" placeholder="No. Telpon" value="{{ auth('customer')->user()->phone }}" required>
+                </div>
+                <div class="col-sm-6 py-2 wow fadeInLeft">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" class="form-control" name="email" placeholder="Email anda..." value="{{ auth('customer')->user()->email }}" required>
+                </div>
+                <div class="col-sm-6 py-2 wow fadeInRight">
+                    <label for="image">Gambar</label>
+                    <input type="file" id="image" class="form-control" name="image" value="{{ auth('customer')->user()->image }}" required>
+                </div>
+                <div class="col-12 py-2 wow fadeInUp">
+                    <label for="gender">Jenis Kelamin</label>
+                    <select name="gender" id="gender" required class="form-control">
+                        <option selected>Pilih kelamin</option>
+                        <option value="Laki - Laki">Laki - Laki</option>
+                        <option value="Perempuan">Perempuan</option>
+                    </select>
+                </div>
+                <div class="col-12 py-2 wow fadeInUp">
+                    <label for="address">Alamat</label>
+                        <textarea id="address" class="form-control" rows="8" name="address">{{ auth('customer')->user()->address }}</textarea>
+                </div>
+                </div>
+                <button type="submit" class="btn btn-primary wow zoomIn">Simpan</button>
+            </form>
             </div>
         </div>
-    </div>
-
-
-    <footer class="footer-detail">
-        <span>Copyright 2023 | Naira - HD</span>
-    </footer>
-
-    <!-- Modal -->
-    @foreach ($orderUser as $data)
-    <form action="{{ route('client.profile.payment' , Crypt::encryptString(@$data->id)) }}" method="POST" enctype="multipart/form-data">
-    @csrf
-    <div class="modal fade" id="paynow{{ @$data->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Struk Tagihan Anda</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                <div class="mb-3">
-                    <div class="group-detail-pay">
-                        <div class="detail-name">
-                            Produk
-                        </div>
-                        <div>
-                            {{ @$data->product->name }}
-                        </div>
-                    </div>
-                <div class="group-detail-pay">
-                    <div class="detail-name">
-                        Pembayaran
-                    </div>
-                    <div>
-                        {{ @$data->payment }} 
-                        @if($data->payment == "COD")
-                        @else
-                        : 2290528987
-                        @endif
-                    </div>
-                </div>
-                <div class="group-detail-pay">
-                    <div class="detail-name">
-                        Jumlah
-                    </div>
-                    <div>
-                        {{ @$data->quantity }}
-                    </div>
-                </div>
-                <div class="group-detail-pay">
-                    <div class="detail-name">
-                        Harga/1
-                    </div>
-                    <div>
-                        Rp. {{ number_format(@$data->product->price) }}
-                    </div>
-                </div class="detail-name">
-                     <div class="group-detail-pay">
-                        <div>
-                            Total Tagihan
-                        </div>
-                        <div>
-                            Rp. {{ number_format(@$data->totalPrice) }}cre
-                        </div>
-                    </div>
-                </div>
-            <div class="mb-3 text-center">
-                    <h5>Lakukan Pembayaran</h5>
-                    <p>silahkan lakukan Pembayaran sesuai dengan metode pembayaran anda dan barang akan segera di kirim, kirim bukti transfer pada form ini</p>
-                    <input type="file" class="form-control" name="evidence" id="evidence">
-                </div>
-                </div>
-                <div class="modal-footer text-center">
-                    <button type="submit" class="transfer-bank">Kirim</button>
-                </div>
-            </div>
         </div>
-    </div>
-    </form>
-    @endforeach
+        <div class="col-lg-4">
+          <div class="sidebar">
+            <div class="sidebar-block">
+              <h3 class="sidebar-title">Cari Order</h3>
+              <form action="#" class="search-form">
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Type a keyword and hit enter">
+                  <button type="submit" class="btn"><span class="icon mai-search"></span></button>
+                </div>
+              </form>
+            </div>
 
-    @foreach ($orderUser as $data)
-    <form action="{{ route('client.profile.confirm' , Crypt::encryptString(@$data->id)) }}" method="POST" enctype="multipart/form-data">
-    @csrf
-    <div class="modal fade" id="confirm{{ @$data->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Struk Tagihan Anda</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="sidebar-block">
+              <h3 class="sidebar-title">Order Anda 
+              </h3>
+              <div class="blog-item">
+                <a class="post-thumb" href="">
+                  <img src="{{asset('template/one-health/assets/img/blog/blog_1.jpg')}}" alt="">
+                </a>
+                <div class="content">
+                  <h5 class="post-title"><a href="#">Even the all-powerful Pointing has no control</a></h5>
+                  <div class="meta">
+                    <a href="#"><span class="mai-calendar"></span> July 12, 2018</a>
+                    <a href="#"><span class="mai-person"></span> Admin</a>
+                    <a href="#"><span class="mai-chatbubbles"></span> 19</a>
+                  </div>
                 </div>
-                <div class="modal-body">
-                    <div class="mb-3 text-center">
-                        <p>Tekan Tombol Konfimasi untuk mengkonfirmasi pesanan anda sudah sampai pada tujuan yang di tentukan Terimakasih {{ auth('customer')->user()->name }}</p>
-                    </div>
+              </div>
+              <div class="blog-item">
+                <a class="post-thumb" href="">
+                  <img src="{{asset('template/one-health/assets/img/blog/blog_2.jpg')}}" alt="">
+                </a>
+                <div class="content">
+                  <h5 class="post-title"><a href="#">Even the all-powerful Pointing has no control</a></h5>
+                  <div class="meta">
+                    <a href="#"><span class="mai-calendar"></span> July 12, 2018</a>
+                    <a href="#"><span class="mai-person"></span> Admin</a>
+                    <a href="#"><span class="mai-chatbubbles"></span> 19</a>
+                  </div>
                 </div>
-                <div class="modal-footer text-center">
-                    <button type="submit" class="transfer-bank">konfirmasi</button>
+              </div>
+              <div class="blog-item">
+                <a class="post-thumb" href="">
+                  <img src="{{asset('template/one-health/assets/img/blog/blog_3.jpg')}}" alt="">
+                </a>
+                <div class="content">
+                  <h5 class="post-title"><a href="#">Even the all-powerful Pointing has no control</a></h5>
+                  <div class="meta">
+                    <a href="#"><span class="mai-calendar"></span> July 12, 2018</a>
+                    <a href="#"><span class="mai-person"></span> Admin</a>
+                    <a href="#"><span class="mai-chatbubbles"></span> 19</a>
+                  </div>
                 </div>
+              </div>
             </div>
-            </div>
+          </div>
+        </div> 
+      </div> <!-- .row -->
+    </div> <!-- .container -->
+  </div> <!-- .page-section -->
+
+  <div class="page-section banner-home bg-image" style="background-image: url('{{asset('template/one-health/assets/img/banner-pattern.svg')}}');">
+    <div class="container py-5 py-lg-0">
+      <div class="row align-items-center">
+        <div class="col-lg-4 wow zoomIn">
+          <div class="img-banner d-none d-lg-block">
+            <img src="{{asset('template/one-health/assets/img/mobile_app.png')}}" alt="">
+          </div>
         </div>
-    </form>
-    @endforeach
-
-    @foreach ($orderUser as $data)
-    <form action="{{ route('client.profile.comment' , Crypt::encryptString(@$data->id)) }}" method="POST" enctype="multipart/form-data">
-    @csrf
-    <div class="modal fade" id="comment{{ @$data->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">konfirmasi Pesanan</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <div class="mb-3">
-                            <label for="image">Gambar</label>
-                            <input type="file"  class="form-control" name="image" id="image">
-                        </div>
-                        <div class="mb-3">
-                            <label for="message">Pesan</label>
-                            <textarea name="message" id="message" class="form-control" cols="30" rows="10"></textarea>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer text-center">
-                    <button type="submit" class="transfer-bank">Kirim</button>
-                </div>
-            </div>
-            </div>
+        <div class="col-lg-8 wow fadeInRight">
+          <h1 class="font-weight-normal mb-3">Get easy access of all features using One Health Application</h1>
+          <a href="#"><img src="{{asset('template/one-health/assets/img/google_play.svg')}}" alt=""></a>
+          <a href="#" class="ml-2"><img src="{{asset('template/one-health/assets/img/app_store.svg')}}" alt=""></a>
         </div>
-    </form>
-    @endforeach
+      </div> <!-- .row -->
+    </div> <!-- .container -->
+  </div> <!-- .banner-home -->
 
-    @foreach ($orderUser as $data)
-    @csrf
-    <div class="modal fade" id="struck{{ @$data->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Struk Order Anda</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                <div class="mb-3">
-                    <div class="group-detail-pay">
-                        <div class="detail-name">
-                            Produk
-                        </div>
-                        <div>
-                            {{ @$data->product->name }}
-                        </div>
-                    </div>
-                <div class="group-detail-pay">
-                    <div class="detail-name">
-                        Pembayaran
-                    </div>
-                    <div>
-                        {{ @$data->payment }} 
-                        @if($data->payment == "COD")
-                        @else
-                        : 2290528987
-                        @endif
-                    </div>
-                </div>
-                <div class="group-detail-pay">
-                    <div class="detail-name">
-                        Jumlah
-                    </div>
-                    <div>
-                        {{ @$data->quantity }} produk
-                    </div>
-                </div>
-                <div class="group-detail-pay">
-                    <div class="detail-name">
-                        Harga/1
-                    </div>
-                    <div>
-                        Rp. {{ number_format(@$data->product->price) }}
-                    </div>
-                </div class="detail-name">
-                     <div class="group-detail-pay">
-                        <div>
-                            Total Tagihan
-                        </div>
-                        <div>
-                            Rp. {{ number_format(@$data->totalPrice) }}
-                        </div>
-                    </div>
-                </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    @endforeach
+  @include('layouts.client.footer')
 
-    <!-- Remove the container if you want to extend the Footer to full width. -->
-    <!-- End of .container -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="./assets/js/scroll.js" type="text/javascript"></script>
-    <script src="./assets/js/action-navbar.js" type="text/javascript"></script>
-    <script src="./assets/js/navbar.js" type="text/javascript"></script>
-    <script src="./assets/js/plus-min.js" type="text/javascript"></script>
-    <script src="./assets/js/action-button.js" type="text/javascript"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-        crossorigin="anonymous"></script>
+  @include('layouts.client.script')  
 </body>
-
 </html>

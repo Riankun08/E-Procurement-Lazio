@@ -30,8 +30,10 @@ Route::controller(App\Http\Controllers\Client\AuthController::class)->group(func
 Route::group(['middleware' => ['customer.auth']], function(){
     Route::controller(App\Http\Controllers\Client\LandingPageController::class)->group(function () {
         Route::get('/open-shop', 'index')->name('client.landing.log');
-        Route::get('/question', 'question')->name('client.question');
-        Route::get('/question/detail/{id}', 'questionShow')->name('client.questionShow');
+        Route::get('/abouts/open-shop', 'about')->name('client.abouts.log');
+        Route::get('/products/open-shop', 'product')->name('client.products.log');
+        Route::get('/contacts/open-shop', 'contact')->name('client.contacts.log');
+        Route::get('/news/open-shop', 'news')->name('client.news.log');
         Route::post('/comment/store', 'storeComment')->name('client.comment.store');
     });
 

@@ -27,6 +27,12 @@ body {
   color: #343531;
 }
 
+/* entites class */
+.image-width-profile {
+  width: 130px;
+  text-align: center;
+}
+
 .logo-navbar {
   width: 100px;
 }

@@ -46,7 +46,11 @@
               <a class="nav-link" href="{{ route('client.contacts') }}">Kontak</a>
             </li>
             <li class="nav-item">
-              <a class="btn btn-primary ml-lg-3" href="#">Login / Register</a>
+              @if(auth('customer')->user()->id != NULL)
+              <a class="btn btn-primary ml-lg-3" href="{{ route('client.profile' , Crypt::encryptString(auth('customer')->user()->id)) }}">{{ auth('customer')->user()->name }}</a>
+              @else
+              <a class="btn btn-primary ml-lg-3" href="{{ route('client.login') }}">Login / Register</a>
+              @endif
             </li>
           </ul>
         </div> <!-- .navbar-collapse -->

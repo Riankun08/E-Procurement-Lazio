@@ -27,7 +27,7 @@
 
   <div class="page-section">
     <div class="container">
-      <h1 class="text-center wow fadeInUp">Get in Touch</h1>
+      <h1 class="text-center wow fadeInUp">Kirim Kesan dan pesan anda pada kami</h1>
 
       <form class="contact-form mt-5">
         <div class="row mb-3">

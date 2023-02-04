@@ -35,9 +35,10 @@ class ProfileController extends Controller
      */
     public function index($id)
     {
+        $title = "Profil Saya";
         $decryptID = Crypt::decryptString($id);
         $orderUser = Order::where('userId' , $decryptID)->get(); 
-        return view('client.profile.index' , compact('orderUser'));
+        return view('client.profile.index' , compact('orderUser' , 'title'));
     }
 
     /**
