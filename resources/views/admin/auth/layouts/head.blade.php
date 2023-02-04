@@ -1,30 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Login &mdash; Admin</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Login - Admin Apotek HDN</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="{{asset('template/base-admin-new/vendors/feather/feather.css')}}">
+  <link rel="stylesheet" href="{{asset('template/base-admin-new/vendors/ti-icons/css/themify-icons.css')}}">
+  <link rel="stylesheet" href="{{asset('template/base-admin-new/vendors/css/vendor.bundle.base.css')}}">
+  <!-- endinject -->
 
-  <!-- General CSS Files -->
-  <link rel="stylesheet" href="{{ asset('template/base-admin/dist/assets/modules/bootstrap/css/bootstrap.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('template/base-admin/dist/assets/modules/fontawesome/css/all.min.css')}}">
-  <link rel="shortcut icon" href="{{asset('template/base-admin/dist/assets/img/logo-naira-object.png')}}" type="image/x-icon"/>
-
-  <!-- CSS Libraries -->
-  <link rel="stylesheet" href="{{ asset('template/base-admin/dist/assets/modules/bootstrap-social/bootstrap-social.css')}}">
-
-  <!-- Template CSS -->
-  <link rel="stylesheet" href="{{ asset('template/base-admin/dist/assets/css/style.css')}}">
-  <link rel="stylesheet" href="{{ asset('template/base-admin/dist/assets/css/components.css')}}">
+  <!-- inject:css -->
+  <link rel="stylesheet" href="{{asset('template/base-admin-new/css/vertical-layout-light/style.css')}}">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="{{asset('template/base-admin-new/images/logo-apotek-hdn.jpeg')}}" />
   <meta name="csrf-token" content="{{ csrf_token() }}">
-<!-- Start GA -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-94034622-3');
-</script>
-<!-- /END GA -->
-</head>
+  </head>

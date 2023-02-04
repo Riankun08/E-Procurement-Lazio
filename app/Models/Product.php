@@ -14,7 +14,7 @@ class Product extends Model
     protected $table = "products";
     protected $primaryKey = 'id';
     protected $fillable = [
-        'id' , 'name' , 'price' , 'merk' , 'quantity' , 'remainingQuantity' , 'status' , 'image'  , 'categories' , 'description' 
+        'id' , 'name' , 'price' , 'merk' , 'quantity' , 'remainingQuantity' , 'status' , 'image'  , 'category' , 'form' , 'description' 
     ];
 
     public function order()

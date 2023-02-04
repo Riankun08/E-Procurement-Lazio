@@ -55,9 +55,7 @@ class ProductController extends Controller
     public function create()
     {
         try  { 
-            $size = Size::all();
-            $color = Color::all();
-            return view($this->view.'create' , compact('size' , 'color'));
+            return view($this->view.'create');
         } catch (DecryptException $e) {
             Alert::error('error!', 'validation url');
             return back();
@@ -74,7 +72,7 @@ class ProductController extends Controller
     {
         try {
             $input = $request->all();
-
+            
             $this->validate($request, [
                 'image' => 'required|file|image|mimes:jpeg,png,jpg',
             ]);
@@ -87,30 +85,15 @@ class ProductController extends Controller
             $result = $this->model->create([
                 'name' => $input['name'],
                 'price' => $input['price'],
-                'brand' => $input['brand'],
+                'merk' => $input['merk'],
                 'image' => $nama_file,
                 'quantity' => $input['quantity'],
                 'status' => $input['status'],
                 'remainingQuantity' => $input['quantity'],
-                'categories' => $input['categories'],
+                'category' => $input['category'],
+                'form' => $input['form'],
                 'description' => $input['description'],
             ]);
-
-            if($input['sizeId']) {
-                foreach ($input['sizeId'] as $value) {
-                    $inputSize['productId'] = $result->id; 
-                    $inputSize['sizeId'] = $value; 
-                    $resultSize = SizeProduct::create($inputSize);
-                }
-            }
-
-            if($input['colorId']) {
-                foreach ($input['colorId'] as $value) {
-                    $inputSize['productId'] = $result->id; 
-                    $inputSize['colorId'] = $value; 
-                    $resultSize = ColorProduct::create($inputSize);
-                }
-            }
     
             if($result){
                 Alert::success('Create Success!', 'Success create data '.$this->title);
@@ -131,10 +114,8 @@ class ProductController extends Controller
     public function show($id)
     {
         $decryptID = Crypt::decryptString($id);
-        $size = Size::all();
-        $color = Color::all();
-        $data = $this->model->with('sizeProduct')->find($decryptID);
-        return view($this->view.'detail' , compact('data' , 'size' , 'color'));
+        $data = $this->model->find($decryptID);
+        return view($this->view.'detail' , compact('data'));
     }
 
     /**
@@ -146,10 +127,8 @@ class ProductController extends Controller
     public function edit($id)
     {
         $decryptID = Crypt::decryptString($id);
-        $size = Size::all();
-        $color = Color::all();
-        $data = $this->model->with('sizeProduct')->find($decryptID);
-        return view($this->view.'edit' , compact('data' , 'size' , 'color'));
+        $data = $this->model->find($decryptID);
+        return view($this->view.'edit' , compact('data'));
     }
 
     /**
@@ -166,8 +145,6 @@ class ProductController extends Controller
 
             $input = $request->all();
     
-            $input = $request->all();
-
             $this->validate($request, [
                 'image' => 'required|file|image|mimes:jpeg,png,jpg',
             ]);
@@ -180,32 +157,16 @@ class ProductController extends Controller
             $result = $this->model->find($decryptID)->update([
                 'name' => $input['name'],
                 'price' => $input['price'],
-                'brand' => $input['brand'],
+                'merk' => $input['merk'],
                 'image' => $nama_file,
                 'quantity' => $input['quantity'],
                 'status' => $input['status'],
                 'remainingQuantity' => $input['quantity'],
-                'categories' => $input['categories'],
+                'category' => $input['category'],
+                'form' => $input['form'],
                 'description' => $input['description'],
             ]);
 
-            if($input['sizeId']) {
-                $deleteSize = SizeProduct::where('productId' , $decryptID)->delete();
-                foreach ($input['sizeId'] as $value) {
-                    $inputSize['productId'] = $decryptID; 
-                    $inputSize['sizeId'] = $value; 
-                    $resultSize = SizeProduct::create($inputSize);
-                }
-            }
-
-            if($input['colorId']) {
-                foreach ($input['colorId'] as $value) {
-                    $inputSize['productId'] = $decryptID; 
-                    $inputSize['colorId'] = $value; 
-                    $resultSize = ColorProduct::create($inputSize);
-                }
-            }
-    
             if($result){
                 Alert::success('Update Success!', 'Success Update data '.$this->title);
                 return redirect()->route($this->route.'index');

@@ -184,8 +184,8 @@
       </a>
       <div class="collapse" id="ui-basic">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item active"> <a class="nav-link" href="{{ route('admin.news.index') }}">News</a></li>
-          <li class="nav-item active"> <a class="nav-link" href="{{ route('admin.products.index') }}">Products</a></li>
+          <li class="nav-item active"> <a class="nav-link" href="{{ route('admin.news.index') }}">Berita</a></li>
+          <li class="nav-item active"> <a class="nav-link" href="{{ route('admin.products.index') }}">Produk</a></li>
         </ul>
       </div>
     </li>

@@ -25,15 +25,17 @@ class CheckOutController extends Controller
     public function showDetail($id)
     {
         $decryptID = Crypt::decryptString($id);
-        $data = Product::with('sizeProduct.size' , 'colorProduct.color')->find($decryptID);
-        return view('client.detail.index' , compact('data'));
+        $data = Product::find($decryptID);
+        $title = "Detail " . @$data->name;
+        return view('client.detail.detail-product' , compact('data' , 'title'));
     }
 
     public function showPayOrder($id)
     {
         $decryptID = Crypt::decryptString($id);
         $order = Order::find($decryptID);
-        return view('client.detail.checkout' , compact('order'));
+        $title = "Checkout"; 
+        return view('client.detail.checkout' , compact('order' , 'title'));
     }
 
     /**
@@ -56,24 +58,14 @@ class CheckOutController extends Controller
     {
         $decryptID = Crypt::decryptString($id);
         $input = $request->all();
-        
+
         if($input['quantity'] == "") {
             Alert::error('Mohon Maaf!', 'isi jumlah barang dengan benar');
             return back();
         }
-
-        if($input['quantity'] == "0") {
-            Alert::error('Mohon Maaf!', 'isi jumlah barang dengan benar');
-            return back();
-        }
-
-        if($input['sizeId'] == "" && $input['colorId'] == "") {
-            Alert::error('Mohon Maaf!', 'isi kriteria barang dengan benar');
-            return back();
-        }
             
             $product = Product::find($decryptID);
-        if($input['quantity'] <= $product->quantity) {
+         if($input['quantity'] <= $product->quantity) {
             $resultQty = $product->quantity - $input['quantity'];
     
             $dataProduct = Product::find($decryptID)->update([
@@ -90,9 +82,7 @@ class CheckOutController extends Controller
            'productId' => $decryptID, 
            'userId' => auth('customer')->user()->id, 
            'quantity' => $input['quantity'], 
-           'sizeId' => $input['sizeId'], 
            'totalPrice' => $totalPrice, 
-           'colorId' => $input['colorId'], 
         ]);
 
         $order = Order::find($CreateOrder->id);
@@ -160,9 +150,10 @@ class CheckOutController extends Controller
 
     public function OrderSuccess($id) 
     {
+        $title = "Order Sukses";
         $decryptID = Crypt::decryptString($id);
         $order = Order::find($decryptID);
-        return view('client.detail.success' , compact('order'));
+        return view('client.detail.success' , compact('order' , 'title'));
     }
 
 

@@ -22,7 +22,7 @@
             </div>
           </div>
           <div class="col-lg-4 grid-margin stretch-card">
-          <div class="card">
+          <div class="card text-center">
             <div class="card-body">
               <img src="{{ asset('image-save/image-news/' . @$data->image) }}" alt="" class="img-fluid">
             </div>

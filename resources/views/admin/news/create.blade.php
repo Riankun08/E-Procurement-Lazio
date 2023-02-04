@@ -6,7 +6,7 @@
       <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
               <div class="card-body">
-                <h4 class="card-title">Default form</h4>
+                <h4 class="card-title">Tambah {{ @$title }}</h4>
                 <p class="card-description">
                   isi data dengan benar untuk tambah data
                 </p>

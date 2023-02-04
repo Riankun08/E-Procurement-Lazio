@@ -28,56 +28,27 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-10">
-
           <div class="row">
-            
+
+            @foreach ($product as $item)
             <div class="col-md-6 col-lg-4 py-3 wow zoomIn">
               <div class="card-doctor">
                 <div class="header">
-                  <img src="{{asset('template/one-health/assets/img/doctors/doctor_1.jpg')}}" alt="">
-                  <div class="meta">
-                    <a href="#"><span class="mai-call"></span></a>
-                    <a href="#"><span class="mai-logo-whatsapp"></span></a>
+                  <img src="{{asset('image-save/image-product/' .  @$item->image)}}" alt="image product">
+                  <div class="meta text-center">
+                    <a href="{{ route('client.product.detail' , Crypt::encryptString(@$item->id)) }}"><span class="mai-eye"></span></a>
                   </div>
                 </div>
                 <div class="body">
-                  <p class="text-xl mb-0">Dr. Stein Albert</p>
-                  <span class="text-sm text-grey">Cardiology</span>
+                  <p class="text-xl mb-0">{{ @$item->name }}</p>
+                  <p class="text-sm mb-0">{{ @$item->category }}</p>
+                  <p class="text-sm mb-0">{{ @$item->form }}</p>
+                  <span class="text-sm text-grey">Rp. {{ number_format(@$item->price) }}</span>
                 </div>
               </div>
             </div>
+            @endforeach
     
-            <div class="col-md-6 col-lg-4 py-3 wow zoomIn">
-              <div class="card-doctor">
-                <div class="header">
-                  <img src="{{asset('template/one-health/assets/img/doctors/doctor_2.jpg')}}" alt="">
-                  <div class="meta">
-                    <a href="#"><span class="mai-call"></span></a>
-                    <a href="#"><span class="mai-logo-whatsapp"></span></a>
-                  </div>
-                </div>
-                <div class="body">
-                  <p class="text-xl mb-0">Dr. Alexa Melvin</p>
-                  <span class="text-sm text-grey">Dental</span>
-                </div>
-              </div>
-            </div>
-    
-            <div class="col-md-6 col-lg-4 py-3 wow zoomIn">
-              <div class="card-doctor">
-                <div class="header">
-                  <img src="{{asset('template/one-health/assets/img/doctors/doctor_3.jpg')}}" alt="">
-                  <div class="meta">
-                    <a href="#"><span class="mai-call"></span></a>
-                    <a href="#"><span class="mai-logo-whatsapp"></span></a>
-                  </div>
-                </div>
-                <div class="body">
-                  <p class="text-xl mb-0">Dr. Rebecca Steffany</p>
-                  <span class="text-sm text-grey">General Health</span>
-                </div>
-              </div>
-            </div>
 
           </div>
         </div>

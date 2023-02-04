@@ -19,19 +19,29 @@
               <table class="table table-hover">
                 <thead>
                   <tr>
-                    <th>Judul</th>
-                    <th>Tema</th>
-                    <th>Tanggal Posting</th>
+                    <th>No</th>
+                    <th>Nama</th>
+                    <th>Merk</th>
+                    <th>Kategori</th>
+                    <th>Bentuk</th>
+                    <th>Jumlah</th>
+                    <th>Status</th>
                     <th class="text-center">Aksi</th>
                   </tr>
                 </thead>
                 <tbody>
+                  @php $no = 1; @endphp
                   @foreach ($datas as $data)
                   <tr>
-                    <td>{{ @$data->title }}</td>
-                    <td>{{ @$data->theme }}</td>
+                    <td>{{ @$no++ }}</td>
+                    <td>{{ @$data->name }}</td>
+                    <td>{{ @$data->merk }}</td>
+                    <td>{{ @$data->category }}</td>
+                    <td>{{ @$data->form }}</td>
+                    <td>{{ @$data->quantity }}</td>
+                    <td>{{ @$data->status }}</td>
                     <td><label class="badge badge-success">{{ @$data->datePost }}</label></td>
-                    <td>
+                    <td class="text-center">
                       <div class="d-flex justify-content-center">
                         <div class="m-1">
                           <a href="{{ route($route.'show' , Crypt::encryptString(@$data->id)) }}">Detail</a>

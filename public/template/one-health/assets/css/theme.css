@@ -33,6 +33,38 @@ body {
   text-align: center;
 }
 
+.content {
+  display: flex;
+}
+
+.cart-totals {
+  display: flex;
+}
+
+#minus-button {
+  width: 30px;
+  border: none;
+  border-radius: 5px;
+  height: 30px;
+  background-color: #00D9A5;
+  color: white;
+  font-size: 16px;
+}
+
+#plus-button {
+  width: 30px;
+  border: none;
+  border-radius: 5px;
+  height: 30px;
+  color: white;
+  font-size: 16px;
+  background-color: #00D9A5;
+}
+
+#quantity {
+  height: 30px;
+}
+
 .logo-navbar {
   width: 100px;
 }
@@ -272,6 +304,31 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 /* Buttons */
+.btn-app-primary {
+  color: #fff;
+  background-color: #46b8d3;
+  border-color: transparent;
+  width: 100%;
+}
+
+.btn-app-primary.disabled, .btn-app-primary:disabled {
+  color: #fff;
+  background-color: #07be94;
+  border-color: transparent;
+}
+
+.btn-app-primary:not(:disabled):not(.disabled):active, .btn-app-primary:not(:disabled):not(.disabled).active,
+.show > .btn-app-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #00D9A5;
+  border-color: #07be94;
+}
+
+.btn-app-primary:not(:disabled):not(.disabled):active:focus, .btn-app-primary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-app-primary.dropdown-toggle:focus {
+  box-shadow: none;
+}
+
 .btn-primary {
   color: #fff;
   background-color: #46b8d3;
@@ -501,6 +558,7 @@ a.text-dark:hover, a.text-dark:focus {
   box-shadow: none;
 }
 
+.btn-app-primary:hover,
 .btn-primary:hover,
 .btn-accent:hover,
 .btn-secondary:hover,
@@ -515,6 +573,7 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .btn-primary:focus, .btn-primary.focus,
+.btn-app-primary:focus, .btn-app-primary.focus,
 .btn-accent:focus, .btn-accent.focus,
 .btn-secondary:focus, .btn-secondary.focus,
 .btn-success:focus, .btn-success.focus,
@@ -1450,6 +1509,7 @@ a.text-dark:hover, a.text-dark:focus {
 .card-blog .post-title,
 .card-blog .post-title a {
   color: #343531;
+  font-size: 12px;
 }
 
 .card-blog .post-title:hover,
@@ -1481,12 +1541,12 @@ a.text-dark:hover, a.text-dark:focus {
   width: 100%;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(154, 159, 151, 0.3);
 }
 
 .blog-details .post-title {
   margin-bottom: 24px;
   font-weight: 400;
+  font-size: 12px;
 }
 
 .blog-details .post-content {
@@ -1635,6 +1695,7 @@ a.text-dark:hover, a.text-dark:focus {
 .blog-item {
   position: relative;
   display: flex;
+  justify-content: space-between;
   flex-direction: row;
   padding-bottom: 12px;
   margin-bottom: 20px;
@@ -1648,7 +1709,6 @@ a.text-dark:hover, a.text-dark:focus {
   margin-right: 15px;
   width: 100px;
   height: 80px;
-  background-color: #A1AAA7;
   overflow: hidden;
 }
 
@@ -1660,6 +1720,8 @@ a.text-dark:hover, a.text-dark:focus {
 .blog-item .post-title a {
   color: #6D7170;
   transition: all .2s ease;
+  font-size: 12px;
+  margin-bottom: 0;
 }
 
 .blog-item .post-title a:hover {

@@ -27,7 +27,7 @@
   <div class="page-section">
     <div class="container">
       <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-6">
         <div class="page-section">
             <div class="container">
             <h1 class="text-center wow fadeInUp">Data Profil Anda</h1>
@@ -35,8 +35,12 @@
                 <div class="col-md-12 text-center">
                     @if(auth('customer')->user()->image != NULL)
                     <img src="{{ asset('image-save/image-user/' . auth('customer')->user()->image  ) }}" class="image-width-profile" alt="Gambar Profil">
-                    @else
+                    @elseif(auth('customer')->user()->gender == "Laki - Laki")
+                    <img src="{{ asset('image-save/man-profile.svg')}}" alt="Gambar Profil" class="image-width-profile">
+                    @elseif(auth('customer')->user()->gender == "Perempuan")
                     <img src="{{ asset('image-save/famale-profile.svg')}}" alt="Gambar Profil" class="image-width-profile">
+                    @else
+                    <img src="{{ asset('image-save/man-profile.svg')}}" alt="Gambar Profil" class="image-width-profile">
                     @endif
                 </div>
             </div>
@@ -64,8 +68,8 @@
                     <label for="gender">Jenis Kelamin</label>
                     <select name="gender" id="gender" required class="form-control">
                         <option selected>Pilih kelamin</option>
-                        <option value="Laki - Laki">Laki - Laki</option>
-                        <option value="Perempuan">Perempuan</option>
+                        <option value="Laki - Laki" {{ ( auth('customer')->user()->gender == "Laki - Laki") ? 'selected' : ''  }}>Laki - Laki</option>
+                        <option value="Perempuan" {{ ( auth('customer')->user()->gender == "Perempuan") ? 'selected' : ''  }}>Perempuan</option>
                     </select>
                 </div>
                 <div class="col-12 py-2 wow fadeInUp">
@@ -78,13 +82,13 @@
             </div>
         </div>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-6">
           <div class="sidebar">
             <div class="sidebar-block">
               <h3 class="sidebar-title">Cari Order</h3>
               <form action="#" class="search-form">
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Type a keyword and hit enter">
+                  <input type="text" id="filter" class="form-control" placeholder="Ketik Sesuatu . . .">
                   <button type="submit" class="btn"><span class="icon mai-search"></span></button>
                 </div>
               </form>
@@ -93,45 +97,28 @@
             <div class="sidebar-block">
               <h3 class="sidebar-title">Order Anda 
               </h3>
-              <div class="blog-item">
-                <a class="post-thumb" href="">
-                  <img src="{{asset('template/one-health/assets/img/blog/blog_1.jpg')}}" alt="">
-                </a>
+              @foreach ($orderUser as $order)
+              <div class="blog-item" id="results">
                 <div class="content">
-                  <h5 class="post-title"><a href="#">Even the all-powerful Pointing has no control</a></h5>
-                  <div class="meta">
-                    <a href="#"><span class="mai-calendar"></span> July 12, 2018</a>
-                    <a href="#"><span class="mai-person"></span> Admin</a>
-                    <a href="#"><span class="mai-chatbubbles"></span> 19</a>
+                  <div>
+                    <a class="post-thumb" href="">
+                      <img src="{{asset('image-save/image-product/' . @$order->product->image)}}" alt="">
+                    </a>
                   </div>
+                  <div>
+                    <h5 class="post-title" style="margin-bottom: 0px"><a href="#">{{ @$order->product->name }}</a></h5>
+                    <h5 class="post-title" style="margin-bottom: 0px"><a href="#">{{ @$order->status }}</a></h5>
+                    <div class="meta">
+                      <a href="#"><span class="mai-card-outline"></span> Rp. {{number_format(@$order->totalPrice)}}</a>
+                      <a href="#"><span class="mai-chatbubbles"></span> {{ @$order->quantity }} pcs</a>
+                    </div>
+                  </div>
+                  </div>
+                <div>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">bayar</button>
                 </div>
               </div>
-              <div class="blog-item">
-                <a class="post-thumb" href="">
-                  <img src="{{asset('template/one-health/assets/img/blog/blog_2.jpg')}}" alt="">
-                </a>
-                <div class="content">
-                  <h5 class="post-title"><a href="#">Even the all-powerful Pointing has no control</a></h5>
-                  <div class="meta">
-                    <a href="#"><span class="mai-calendar"></span> July 12, 2018</a>
-                    <a href="#"><span class="mai-person"></span> Admin</a>
-                    <a href="#"><span class="mai-chatbubbles"></span> 19</a>
-                  </div>
-                </div>
-              </div>
-              <div class="blog-item">
-                <a class="post-thumb" href="">
-                  <img src="{{asset('template/one-health/assets/img/blog/blog_3.jpg')}}" alt="">
-                </a>
-                <div class="content">
-                  <h5 class="post-title"><a href="#">Even the all-powerful Pointing has no control</a></h5>
-                  <div class="meta">
-                    <a href="#"><span class="mai-calendar"></span> July 12, 2018</a>
-                    <a href="#"><span class="mai-person"></span> Admin</a>
-                    <a href="#"><span class="mai-chatbubbles"></span> 19</a>
-                  </div>
-                </div>
-              </div>
+              @endforeach
             </div>
           </div>
         </div> 
@@ -157,6 +144,55 @@
   </div> <!-- .banner-home -->
 
   @include('layouts.client.footer')
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script>
+     $("#filter").keyup(function() {
+
+// Retrieve the input field text and reset the count to zero
+var filter = $(this).val(),
+  count = 0;
+
+// Loop through the comment list
+$('#results').each(function() {
+
+
+  // If the list item does not contain the text phrase fade it out
+  if ($(this).text().search(new RegExp(filter, "i")) < 0) {
+    $(this).hide();  // MY CHANGE
+
+    // Show the list item if the phrase matches and increase the count by 1
+  } else {
+    $(this).show(); // MY CHANGE
+    count++;
+  }
+
+});
+
+});
+  </script>
 
   @include('layouts.client.script')  
 </body>

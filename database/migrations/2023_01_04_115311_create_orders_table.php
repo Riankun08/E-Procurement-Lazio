@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('city', 255)->nullable();
             $table->string('district', 255)->nullable();
             $table->text('address')->nullable();
-            $table->enum('payment', ['BCA', 'MANDIRI', 'COD'])->nullable();
+            $table->enum('payment', ['BCA', 'MANDIRI', 'BNI' , 'COD'])->nullable();
             $table->enum('status', ['newOrder', 'payOrder', 'paidOrder' , 'packingOrder' , 'deliveryOrder', 'successOrder'])->nullable();
             $table->enum('type', ['online', 'offline'])->nullable();
             $table->string('evidence', 255)->nullable();

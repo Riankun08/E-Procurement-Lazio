@@ -23,9 +23,10 @@ class LandingPageController extends Controller
      */
     public function index()
     {
+        $title = "Beranda";
         $testimonial = Testimonial::where('status' , 'publish')->get();
-        $product = Product::with('sizeProduct')->where('status' , 'publish')->get();
-        return view('client.index' , compact('product' , 'testimonial'));
+        $product = Product::where('status' , 'publish')->get();
+        return view('client.index' , compact('product' , 'testimonial' , 'title'));
     }
 
     /**
@@ -47,8 +48,9 @@ class LandingPageController extends Controller
 
     public function product()
     {
+        $product = Product::where('status' , 'publish')->get();
         $title = "Produk";
-        return view('client.product' , compact('title'));
+        return view('client.product' , compact('title' , 'product'));
     }
 
     public function contact()
