@@ -82,7 +82,8 @@ class CheckOutController extends Controller
            'productId' => $decryptID, 
            'userId' => auth('customer')->user()->id, 
            'quantity' => $input['quantity'], 
-           'totalPrice' => $totalPrice, 
+           'totalPrice' => $totalPrice,
+           'shipping' => 7000,
         ]);
 
         $order = Order::find($CreateOrder->id);

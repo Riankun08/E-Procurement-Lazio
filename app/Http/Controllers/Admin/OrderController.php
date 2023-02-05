@@ -56,11 +56,9 @@ class OrderController extends Controller
     public function create()
     {
         try  { 
-            $color = Color::all();
-            $size = Size::all();
             $product = Product::all();
             $customer = User::where('role' , 'customer')->get();
-            return view($this->view.'create' , compact('size' , 'product' , 'customer' , 'color'));
+            return view($this->view.'create' , compact('product' , 'customer'));
         } catch (DecryptException $e) {
             Alert::error('error!', 'validation url');
             return back();
@@ -103,7 +101,6 @@ class OrderController extends Controller
                 
                 $result = $this->model->create([
                     'productId' => $input['productId'],
-                    'sizeId' => $input['sizeId'],
                     'name' => $input['name'],
                     'email' => $input['email'],
                     'phone' => $input['phone'],
@@ -115,11 +112,11 @@ class OrderController extends Controller
                     'totalPrice' => $totalPrice,
                     'quantity' => $input['quantity'],
                     'evidence' => $nama_file,
+                    'shipping' => $input['shipping'],
                 ]);
             } else {
                 $result = $this->model->create([
                     'productId' => $input['productId'],
-                    'sizeId' => $input['sizeId'],
                     'name' => $input['name'],
                     'email' => $input['email'],
                     'phone' => $input['phone'],
@@ -130,6 +127,7 @@ class OrderController extends Controller
                     'totalPrice' => $totalPrice,
                     'status' => $input['status'],
                     'quantity' => $input['quantity'],
+                    'shipping' => $input['shipping'],
                 ]);
             }
     
@@ -152,12 +150,10 @@ class OrderController extends Controller
     public function show($id)
     {
         $decryptID = Crypt::decryptString($id);
-        $color = Color::all();
-        $size = Size::all();
         $product = Product::all();
         $customer = User::where('role' , 'customer')->get();
         $data = $this->model->find($decryptID);
-        return view($this->view.'detail' , compact('data' , 'size' , 'product' , 'customer' , 'color'));
+        return view($this->view.'detail' , compact('data' , 'product' , 'customer'));
     }
 
     /**
@@ -169,12 +165,10 @@ class OrderController extends Controller
     public function edit($id)
     {
         $decryptID = Crypt::decryptString($id);
-        $color = Color::all();
-        $size = Size::all();
         $product = Product::all();
         $customer = User::where('role' , 'customer')->get();
         $data = $this->model->find($decryptID);
-        return view($this->view.'edit' , compact('data' , 'size' , 'product' , 'customer' , 'color'));
+        return view($this->view.'edit' , compact('data' , 'product' , 'customer'));
     }
 
     /**

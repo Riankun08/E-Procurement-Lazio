@@ -10,10 +10,9 @@ class FeedContact extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $table = "news";
-    protected $primaryKey = 'id';
+    protected $table = "feed_contacts";
+    protected $primaryKey = "id";
     protected $fillable = [
         'id' , 'name' , 'email' , 'subject' , 'message'
     ];
-
 }

@@ -10,8 +10,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\View;
 use Illuminate\Http\Request;
-use App\Models\Product;
 use App\Models\Testimonial;
+use App\Models\Product;
+use App\Models\News;
 use Carbon\Carbon;
 
 class LandingPageController extends Controller
@@ -26,7 +27,8 @@ class LandingPageController extends Controller
         $title = "Beranda";
         $testimonial = Testimonial::where('status' , 'publish')->get();
         $product = Product::where('status' , 'publish')->get();
-        return view('client.index' , compact('product' , 'testimonial' , 'title'));
+        $news = News::paginate(3);
+        return view('client.index' , compact('product' , 'testimonial' , 'title' , 'news'));
     }
 
     /**
@@ -42,8 +44,9 @@ class LandingPageController extends Controller
 
     public function news()
     {
+        $news = News::all();
         $title = "Berita";
-        return view('client.news' , compact('title'));
+        return view('client.news' , compact('title' , 'news'));
     }
 
     public function product()

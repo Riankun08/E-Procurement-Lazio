@@ -28,6 +28,11 @@ body {
 }
 
 /* entites class */
+.group-detail-pay {
+  display: flex;
+  justify-content: space-between;
+}
+
 .image-width-profile {
   width: 130px;
   text-align: center;

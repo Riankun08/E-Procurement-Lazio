@@ -1,30 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Client;
 
+use Illuminate\Contracts\Encryption\DecryptException;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Crypt;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\View;
 use Illuminate\Http\Request;
-use App\Models\Order;
-use DB;
+use App\Models\FeedContact;
+use Carbon\Carbon;
 
-class HotSaleController extends Controller
+class FeedContactController extends Controller
 {
-    public $view = 'admin.hotSale.';
-    public $route = 'admin.hotSales.';
-    public $title = 'Terlaris ';
-    public $model;
-
-     public function __construct(Order $model)
-    {
-        $this->model = $model;
-        View::share('title', $this->title);
-        View::share('route', $this->route);
-        View::share('view', $this->view);
-    }
     /**
      * Display a listing of the resource.
      *
@@ -32,12 +22,7 @@ class HotSaleController extends Controller
      */
     public function index()
     {
-        $datas = Order::select('productId', DB::raw('SUM(quantity) as quantity'), DB::raw('SUM(totalPrice) as totalPrice'), DB::raw('SUM(shipping) as shipping'))
-        ->groupBy('productId')
-        ->orderBy('quantity' , 'DESC')
-        ->withTrashed()
-        ->get();
-        return view($this->view.'index' , compact('datas'));
+        //
     }
 
     /**
@@ -58,7 +43,19 @@ class HotSaleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $input = $request->all();
+
+            $result = FeedContact::create($input);
+
+            if($result){
+                Alert::success('Pesan Berhasil Terikirim!', 'Terimakasih atas pesan anda kepada kami');
+                return back();
+            }
+        } catch (DecryptException $e) {
+            Alert::error('Mohon Maaf pesan gagal!', 'Tolong Isi data dengan benar');
+            return back();
+        }   
     }
 
     /**

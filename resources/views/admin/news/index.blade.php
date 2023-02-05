@@ -19,6 +19,7 @@
               <table class="table table-hover">
                 <thead>
                   <tr>
+                    <th>No</th>
                     <th>Judul</th>
                     <th>Tema</th>
                     <th>Tanggal Posting</th>
@@ -26,25 +27,29 @@
                   </tr>
                 </thead>
                 <tbody>
+                  @php
+                  $no = 1;
+                @endphp
                   @foreach ($datas as $data)
                   <tr>
+                    <td>{{ @$no++ }}</td>
                     <td>{{ @$data->title }}</td>
                     <td>{{ @$data->theme }}</td>
                     <td><label class="badge badge-success">{{ @$data->datePost }}</label></td>
-                    <td>
+                    <td class="text-center">
                       <div class="d-flex justify-content-center">
                         <div class="m-1">
-                          <a href="{{ route($route.'show' , Crypt::encryptString(@$data->id)) }}">Detail</a>
+                          <a href="{{ route($route.'show' , Crypt::encryptString($data->id)) }}" class="btn btn-info"><span class="ti-eye"></span></a>
                         </div>
                         <div class="m-1">
-                          <a href="{{ route($route.'edit' , Crypt::encryptString(@$data->id)) }}">Edit</a>
+                        <a href="{{ route($route.'edit' , Crypt::encryptString($data->id)) }}" class="btn btn-success"><span class="ti-pencil-alt"></i></a>
                         </div>
                         <div class="m-1">
-                          <form action="{{ route($route.'destroy', Crypt::encryptString(@$data->id)) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <a type="submit">Hapus</a>
-                          </form>
+                        <form action="{{ route($route.'destroy' , Crypt::encryptString($data->id)) }}" method="post">
+                          @csrf
+                          @method('DELETE')
+                          <butotn type="button" class="btn btn-danger btn-delete" data-id="{{ @$data->id }}" ><span class="ti-trash"></span></butotn>
+                        </form>
                         </div>
                       </div>
                     </td>

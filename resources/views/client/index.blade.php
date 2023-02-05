@@ -4,7 +4,7 @@
     @include('layouts.client.head')
 </head>
 <body>
-
+  @include('sweetalert::alert')
   <!-- Back to top button -->
   <div class="back-to-top"></div>
 
@@ -75,78 +75,33 @@
     <div class="container">
       <h1 class="text-center wow fadeInUp">Berita Terbaru</h1>
       <div class="row mt-5">
+        
+        @foreach ($news as $item)
         <div class="col-lg-4 py-2 wow zoomIn">
           <div class="card-blog">
             <div class="header">
               <div class="post-category">
-                <a href="#">Covid19</a>
+                <a href="#">{{@$item->theme}}</a>
               </div>
               <a href="blog-details.html" class="post-thumb">
-                <img src="{{asset('template/one-health/assets/img/blog/blog_1.jpg')}}" alt="">
+                <img src="{{asset('image-save/image-news/' . @$item->image)}}" alt="">
               </a>
             </div>
             <div class="body">
-              <h5 class="post-title"><a href="blog-details.html">List of Countries without Coronavirus case</a></h5>
+              <h5 class="post-title"><a href="blog-details.html">{{  @$item->title }}</a></h5>
               <div class="site-info">
                 <div class="avatar mr-2">
                   <div class="avatar-img">
-                    <img src="{{asset('template/one-health/assets/img/person/person_1.jpg')}}" alt="">
+                    <img src="{{asset('template/one-health/assets/img/logo-apotek-hdn.jpeg')}}" alt="">
                   </div>
-                  <span>Roger Adams</span>
                 </div>
-                <span class="mai-time"></span> 1 week ago
+                <span class="mai-time"></span> {{ date('d-F-Y' , strtotime(@$item->datePost)) }}
               </div>
             </div>
           </div>
         </div>
-        <div class="col-lg-4 py-2 wow zoomIn">
-          <div class="card-blog">
-            <div class="header">
-              <div class="post-category">
-                <a href="#">Covid19</a>
-              </div>
-              <a href="blog-details.html" class="post-thumb">
-                <img src="{{asset('template/one-health/assets/img/blog/blog_2.jpg')}}" alt="">
-              </a>
-            </div>
-            <div class="body">
-              <h5 class="post-title"><a href="blog-details.html">Recovery Room: News beyond the pandemic</a></h5>
-              <div class="site-info">
-                <div class="avatar mr-2">
-                  <div class="avatar-img">
-                    <img src="{{asset('template/one-health/assets/img/person/person_1.jpg')}}" alt="">
-                  </div>
-                  <span>Roger Adams</span>
-                </div>
-                <span class="mai-time"></span> 4 weeks ago
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 py-2 wow zoomIn">
-          <div class="card-blog">
-            <div class="header">
-              <div class="post-category">
-                <a href="#">Covid19</a>
-              </div>
-              <a href="blog-details.html" class="post-thumb">
-                <img src="{{asset('template/one-health/assets/img/blog/blog_3.jpg')}}" alt="">
-              </a>
-            </div>
-            <div class="body">
-              <h5 class="post-title"><a href="blog-details.html">What is the impact of eating too much sugar?</a></h5>
-              <div class="site-info">
-                <div class="avatar mr-2">
-                  <div class="avatar-img">
-                    <img src="{{asset('template/one-health/assets/img/person/person_2.jpg')}}" alt="">
-                  </div>
-                  <span>Diego Simmons</span>
-                </div>
-                <span class="mai-time"></span> 2 months ago
-              </div>
-            </div>
-          </div>
-        </div>
+        @endforeach
+
 
         <div class="col-12 text-center mt-4 wow zoomIn">
           <a href="{{ route('client.news') }}" class="btn btn-primary">Baca selengkapnya</a>

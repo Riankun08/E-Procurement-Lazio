@@ -30,24 +30,54 @@
 
         <div class="collapse navbar-collapse" id="navbarSupport">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item {{ (request()->is('/')) ? 'active' : '' }}">
-              <a class="nav-link" href="{{ route('client.landing') }}">Beranda</a>
-            </li>
-            <li class="nav-item {{ (request()->is('abouts')) ? 'active' : '' }}">
-              <a class="nav-link" href="{{ route('client.abouts') }}">Tentang</a>
-            </li>
-            <li class="nav-item {{ (request()->is('products')) ? 'active' : '' }}">
-              <a class="nav-link" href="{{ route('client.products') }}">Produk</a>
-            </li>
-            <li class="nav-item {{ (request()->is('news')) ? 'active' : '' }}">
-              <a class="nav-link" href="{{ route('client.news') }}">Berita</a>
-            </li>
-            <li class="nav-item {{ (request()->is('contacts')) ? 'active' : '' }}">
-              <a class="nav-link" href="{{ route('client.contacts') }}">Kontak</a>
-            </li>
+              @if(auth('customer')->user()->id != NULL)
+                <li class="nav-item {{ (request()->is('open-shop')) ? 'active' : '' }}">
+                  <a class="nav-link" href="{{ route('client.landing.log') }}">Beranda</a>
+                </li>
+              @else
+              <li class="nav-item {{ (request()->is('/')) ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('client.landing') }}">Beranda</a>
+              </li>
+              @endif
+              @if(auth('customer')->user()->id != NULL)
+              <li class="nav-item {{ (request()->is('abouts/open-shop')) ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('client.abouts.log') }}">Tentang</a>
+              </li>
+              @else
+              <li class="nav-item {{ (request()->is('abouts')) ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('client.abouts') }}">Tentang</a>
+              </li>
+              @endif
+              @if(auth('customer')->user()->id != NULL)
+              <li class="nav-item {{ (request()->is('products/open-shop')) ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('client.products.log') }}">Produk</a>
+              </li>
+              @else
+              <li class="nav-item {{ (request()->is('products')) ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('client.products') }}">Produk</a>
+              </li>
+              @endif
+              @if(auth('customer')->user()->id != NULL)
+              <li class="nav-item {{ (request()->is('news/open-shop')) ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('client.news.log') }}">Berita</a>
+              </li>
+              @else
+              <li class="nav-item {{ (request()->is('news')) ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('client.news') }}">Berita</a>
+              </li>
+              @endif
+              @if(auth('customer')->user()->id != NULL)
+              <li class="nav-item {{ (request()->is('contacts/open-shop')) ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('client.contacts.log') }}">Kontak</a>
+              </li>
+              @else
+              <li class="nav-item {{ (request()->is('contacts')) ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('client.contacts') }}">Kontak</a>
+              </li>
+              @endif
             <li class="nav-item">
               @if(auth('customer')->user()->id != NULL)
-              <a class="btn btn-primary ml-lg-3" href="{{ route('client.profile' , Crypt::encryptString(auth('customer')->user()->id)) }}">{{ auth('customer')->user()->name }}</a>
+              <a class="btn btn-primary ml-lg-3" href="{{ route('client.profile' , Crypt::encryptString(auth('customer')->user()->id)) }}"><span class="icon mai-person"></span> {{ auth('customer')->user()->name }}</a>
               @else
               <a class="btn btn-primary ml-lg-3" href="{{ route('client.login') }}">Login / Register</a>
               @endif

@@ -1,43 +1,31 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Client;
 
+use Illuminate\Contracts\Encryption\DecryptException;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Crypt;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\View;
 use Illuminate\Http\Request;
-use App\Models\Order;
-use DB;
+use App\Models\News;
+use Carbon\Carbon;
 
-class HotSaleController extends Controller
+class NewsController extends Controller
 {
-    public $view = 'admin.hotSale.';
-    public $route = 'admin.hotSales.';
-    public $title = 'Terlaris ';
-    public $model;
-
-     public function __construct(Order $model)
-    {
-        $this->model = $model;
-        View::share('title', $this->title);
-        View::share('route', $this->route);
-        View::share('view', $this->view);
-    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function detailNews($id)
     {
-        $datas = Order::select('productId', DB::raw('SUM(quantity) as quantity'), DB::raw('SUM(totalPrice) as totalPrice'), DB::raw('SUM(shipping) as shipping'))
-        ->groupBy('productId')
-        ->orderBy('quantity' , 'DESC')
-        ->withTrashed()
-        ->get();
-        return view($this->view.'index' , compact('datas'));
+        $decryptID = Crypt::decryptString($id);
+        $data = News::find($decryptID);
+        $news = News::all();
+        return view('client.detail.detail-news' , compact('data' , 'news'));
     }
 
     /**

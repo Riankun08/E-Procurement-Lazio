@@ -87,14 +87,18 @@
                                 <h4>Data order anda</h4>
                                 <div class="card mt-3">
                                     <div class="card-body">
-                                        <p class="text-sm">catatan : Total Harga ini belum termasuk ongkir, anda akan mendapatkan ongkir sesuai jarak yang di tentukan ketika melakukan checkout</p>
+                                        <p class="text-sm">catatan : Total Harga ini sudah termasuk ongkir.</p>
                                         <div class="d-flex justify-content-between mb-3">
                                             <h6>Jumlah Pembelian</h6>
                                             <h6>: {{ number_format(@$order->quantity) }} pcs</h6>
                                         </div>
                                         <div class="d-flex justify-content-between mb-3">
+                                            <h6>Ongkir</h6>
+                                            <h6>: Rp. {{ number_format(@$order->shipping) }}</h6>
+                                        </div>
+                                        <div class="d-flex justify-content-between mb-3">
                                             <h6>Total Harga</h6>
-                                            <h6>: Rp. {{ number_format(@$order->totalPrice) }}</h6>
+                                            <h6>: Rp. {{ number_format(@$order->totalPrice + @$order->shipping) }}</h6>
                                         </div>
                                         <button type="submit" class="btn btn-app-primary">Checkout</button>
                                     </div>

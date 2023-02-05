@@ -206,14 +206,14 @@ class ProfileController extends Controller
                     $tujuan_upload = $this->path;
                     $file->move($tujuan_upload,$nama_file);
             
-                    $passwordHash = @$input['passwordtugas'];
+                    $passwordHash = @$input['password'];
                     $result = User::find($decryptID)->update([
                         'email' => $input['email'],
                         'name' => $input['name'],
                         'gender' => $input['gender'],
                         'phone' => $input['phone'],
                         'image' => $nama_file,
-                        'password' => Hash::make($passwordHash),
+                        'password' => Hash::make($input['password']),
                     ]);
                 } 
 
@@ -222,7 +222,7 @@ class ProfileController extends Controller
                 'name' => $input['name'],
                 'gender' => $input['gender'],
                 'phone' => $input['phone'],
-                'password' => Hash::make($passwordHash),
+                'password' => Hash::make($input['password']),
             ]);
                 
             if($result){
