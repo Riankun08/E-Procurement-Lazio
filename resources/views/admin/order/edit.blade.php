@@ -13,17 +13,19 @@
                   isi data dengan benar untuk edit data
                 </p>
                     <form class="needs-validation" action="{{ route($route.'update' , Crypt::encryptString($data->id)) }}" method="POST" novalidate="" enctype="multipart/form-data">
+                      <div class="row">
                         @csrf
                         @method('PUT')
                         @include($view.'field')
-                    </form>
+                      </div>
+                      </form>
                   </div>
                 </div>
               </div>
               <div class="col-lg-4 grid-margin stretch-card">
               <div class="card text-center">
                 <div class="card-body">
-                  <img src="{{ asset('image-save/image-order/' . @$data->image) }}" alt="" class="img-fluid">
+                  <img src="{{ asset('image-save/image-order/' . @$data->evidence) }}" alt="" class="img-fluid">
                 </div>
               </div>
             </div>

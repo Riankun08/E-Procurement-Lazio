@@ -193,7 +193,6 @@ class OrderController extends Controller
                 
                 $result = $this->model->find($decryptID)->update([
                     'productId' => $input['productId'],
-                    'sizeId' => $input['sizeId'],
                     'name' => $input['name'],
                     'email' => $input['email'],
                     'phone' => $input['phone'],
@@ -204,11 +203,11 @@ class OrderController extends Controller
                     'status' => $input['status'],
                     'quantity' => $input['quantity'],
                     'evidence' => $nama_file,
+                    'shipping' => $input['shipping'],
                 ]);
             } else {
                 $result = $this->model->find($decryptID)->update([
                     'productId' => $input['productId'],
-                    'sizeId' => $input['sizeId'],
                     'name' => $input['name'],
                     'email' => $input['email'],
                     'phone' => $input['phone'],
@@ -218,6 +217,7 @@ class OrderController extends Controller
                     'payment' => $input['payment'],
                     'status' => $input['status'],
                     'quantity' => $input['quantity'],
+                    'shipping' => $input['shipping'],
                 ]);
             }
     
