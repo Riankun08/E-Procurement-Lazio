@@ -81,7 +81,16 @@
                         <textarea id="address" class="form-control" rows="8" name="address">{{ auth('customer')->user()->address }}</textarea>
                 </div>
                 </div>
-                <button type="submit" class="btn btn-primary wow zoomIn">Simpan</button>
+                <div class="col-md-12">
+              <div class="row">
+                <div class="col-md-6">
+                  <button type="submit" class="btn btn-primary wow zoomIn">Simpan</button>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a href="{{ route('client.logout') }}" class="btn btn-secondary wow zoomIn">Log out</a>
+                </div>
+              </div>
+                </div>
             </form>
             </div>
         </div>
@@ -140,6 +149,7 @@
                     @elseif(@$order->status == "paidOrder") 
                     @elseif(@$order->status == "packingOrder") 
                     @elseif(@$order->status == "deliveryOrder") 
+                    <button type="button" class="btn btn-primary m-1" data-toggle="modal" data-target="#confirm{{@$order->id}}">Konfimasi</button>
                     @elseif(@$order->status == "successOrder") 
                     <button type="button" class="btn btn-primary m-1" data-toggle="modal" data-target="#commnet{{@$order->id}}">komentar</button>
                     @endif
@@ -268,6 +278,32 @@
   </div>
 </div>
 </div>
+</form>
+@endforeach
+
+@foreach ($orderUser as $data)
+<form action="{{ route('client.profile.confirm' , Crypt::encryptString(@$data->id)) }}" method="POST" enctype="multipart/form-data">
+@csrf
+<div class="modal fade" id="confirm{{ @$data->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Konfimasi Pesanan anda</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+            <div class="modal-body">
+                <div class="mb-3 text-center">
+                    <p>Tekan Tombol Konfimasi untuk mengkonfirmasi pesanan anda sudah sampai pada tujuan yang di tentukan Terimakasih {{ auth('customer')->user()->name }}</p>
+                </div>
+            </div>
+            <div class="modal-footer text-center">
+                <button type="submit" class="btn btn-primary">konfirmasi</button>
+            </div>
+        </div>
+        </div>
+    </div>
 </form>
 @endforeach
 
