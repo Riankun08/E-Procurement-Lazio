@@ -74,6 +74,7 @@ class CheckOutController extends Controller
         Alert::error('Mohon Maaf!', 'isi jumlah barang dengan benar');
         return back();
         }
+
             
             $product = Product::find($decryptID);
          if($input['quantity'] <= $product->quantity) {
@@ -134,6 +135,11 @@ class CheckOutController extends Controller
     {
         $decryptID = Crypt::decryptString($id);
         $input = $request->all();
+        
+        if($input['payment'] == "none") {
+            Alert::error('Mohon Maaf!', 'Tolong isi metode pembayaran');
+            return back();
+        }
 
         $CreateOrder = Order::find($decryptID)->update([
             'name' => $input['name'], 

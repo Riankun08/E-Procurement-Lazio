@@ -53,7 +53,7 @@
                             <div class="col-md-12">
                                 <label for="payment">Metode</label>
                                 <select name="payment" id="payment" class="form-control" required>
-                                    <option selected>Pilih Metode Pembayaran</option>
+                                    <option selected value="none">Pilih Metode Pembayaran</option>
                                     <option value="BCA">BCA Transfer</option>
                                     <option value="MANDIRI">Mandiri Transfer</option>
                                     <option value="BNI">BNI Transfer</option>
