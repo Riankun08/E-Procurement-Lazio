@@ -26,8 +26,9 @@ class CheckOutController extends Controller
     {
         $decryptID = Crypt::decryptString($id);
         $data = Product::find($decryptID);
+        $testimonial = Testimonial::where('productId' , $decryptID)->where('status' , 'publish')->get();
         $title = "Detail " . @$data->name;
-        return view('client.detail.detail-product' , compact('data' , 'title'));
+        return view('client.detail.detail-product' , compact('data' , 'title', 'testimonial'));
     }
 
     public function showPayOrder($id)

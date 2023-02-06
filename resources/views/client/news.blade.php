@@ -4,6 +4,7 @@
     @include('layouts.client.head')
 </head>
 <body>
+@include('sweetalert::alert')
   @include('sweetalert::alert')
   <!-- Back to top button -->
   <div class="back-to-top"></div>

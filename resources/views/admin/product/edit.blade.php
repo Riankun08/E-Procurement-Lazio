@@ -17,6 +17,7 @@
                   @csrf
                   @method('PUT')
                   @include('admin.product.field')  
+                  </div>
                 </form>
               </div>
             </div>

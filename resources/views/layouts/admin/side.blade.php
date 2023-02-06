@@ -186,6 +186,8 @@
         <ul class="nav flex-column sub-menu">
           <li class="nav-item"> <a class="nav-link" href="{{ route('admin.news.index') }}">Berita</a></li>
           <li class="nav-item"> <a class="nav-link" href="{{ route('admin.products.index') }}">Produk</a></li>
+          <li class="nav-item"> <a class="nav-link" href="{{ route('admin.users.index') }}">Pengguna</a></li>
+          <li class="nav-item"> <a class="nav-link" href="{{ route('admin.testimonials.index') }}">Testimonial</a></li>
         </ul>
       </div>
     </li>

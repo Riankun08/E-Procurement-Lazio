@@ -4,6 +4,8 @@
     @include('layouts.client.head')
 </head>
 <body>
+@include('sweetalert::alert')
+@include('sweetalert::alert')
 
   <!-- Back to top button -->
   <div class="back-to-top"></div>
@@ -12,7 +14,7 @@
 
   <div class="page-section bg-light">
     <div class="container">
-      <div class="row justify-content-center">
+      <div class="row justify-content-center mb-5">
         <div class="col-lg-12">
           <div class="row">
             <div class="col-md-6 text-center col-lg-6 py-3 wow zoomIn">
@@ -49,6 +51,43 @@
             </div>
         </div>
         </div>
+      </div>
+      <div class="row justify-content-center">
+        <dov class="col-md-12">
+            <h2 class="mb-3 text-center">Testimonial Pengguna</h2>
+        </dov>
+        @foreach ($testimonial as $item)
+        <div class="col-md-6 mb-3">
+            <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3 text-center">
+                                @if(@$item->user->image == NULL)
+                                    @if(@$item->user->gender == "Perempuan")
+                                    <img src="{{ asset('image-save/famale-profile.svg') }}" class="img-fluid" alt="image user">
+                                    @elseif(@$item->user->gender == "Laki - Laki")
+                                    <img src="{{ asset('image-save/man-profile.svg') }}" class="img-fluid" alt="image user">
+                                    @else
+                                    <img src="{{ asset('image-save/man-profile.svg') }}" class="img-fluid" alt="image user">
+                                    @endif
+                                @else
+                                <img src="{{ asset('image-save/image-user/' . @$item->user->image) }}" class="img-fluid" alt="image user">
+                                @endif
+                            </div>
+                            <div class="col-md-6">
+                                <div class="m-1">
+                                    <h5>{{@$item->user->name}}</h5>
+                                    <p class="text-sm">{{@$item->message}}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3 text-center">
+                                <img src="{{ asset('image-save/image-testimonial/' . @$item->image) }}" class="img-fluid" alt="image testimonial">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endforeach
       </div>
     </div> <!-- .container -->
   </div> <!-- .page-section -->

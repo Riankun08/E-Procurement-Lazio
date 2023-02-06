@@ -1,37 +1,28 @@
 @extends('layouts.admin.app')
 @section('title' , $title)
-@section('button-submit' , 'Buat')
 @section('content')
-<div class="section-header">
-  <h1>Buat {{ @$title  }}</h1>
-  <div class="section-header-breadcrumb">
-    <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-    <div class="breadcrumb-item"><a href="#">{{@$title}}</a></div>
-    <div class="breadcrumb-item">Buat {{@$title }}</div>
-  </div>
-</div>
-
-<div class="section-body">
-  <div class="row">
-    <div class="col-12">
-      <div class="card">
-          <div class="card-header">
-              <h4>Masukan data input dengan Benar</h4>
-          </div>
-        <div class="card-body">
+  <div class="content-wrapper">
+    <div class="row">
+      <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">Tambah {{@$title}}</h4>
+                <p class="card-description">
+                  isi data dengan benar untuk tambah data
+                </p>
+            <div class="card-body">
             <form class="needs-validation" action="{{ route($route.'store') }}" method="POST" novalidate="" enctype="multipart/form-data">
+              <div class="row">
                 @csrf
                 @include($view.'field')
-            </form>
+              </div>
+              </form>
         </div>
       </div>
     </div>
   </div>
-</div>
-@endsection
-
-@section('libraiesJS')
 @endsection
 
 @section('script')
+  <script src="{{asset('template/base-admin-new/js/file-upload.js')}}"></script>
 @endsection

@@ -20,6 +20,14 @@ Route::controller(App\Http\Controllers\Client\LandingPageController::class)->gro
     Route::get('/news', 'news')->name('client.news');
 });
 
+Route::controller(App\Http\Controllers\Client\NewsController::class)->group(function () {
+    Route::get('/detail-news/{id}', 'detailNews')->name('client.news.detail');
+});
+
+Route::controller(App\Http\Controllers\Client\FeedContactController::class)->group(function () {
+    Route::post('/store/feed-contact/apotek-hdn', 'store')->name('client.FeedContact');
+});
+
 Route::controller(App\Http\Controllers\Client\AuthController::class)->group(function () {
     Route::get('/login', 'loginForm')->name('client.login');
     Route::post('/login/account', 'login')->name('client.login.submit');
@@ -53,13 +61,6 @@ Route::group(['middleware' => ['customer.auth']], function(){
         Route::post('/profile/order-comment/{id}', 'statusCommentCustomer')->name('client.profile.comment');
     });
 
-    Route::controller(App\Http\Controllers\Client\FeedContactController::class)->group(function () {
-        Route::post('/store/feed-contact/apotek-hdn', 'store')->name('client.FeedContact');
-    });
-
-    Route::controller(App\Http\Controllers\Client\NewsController::class)->group(function () {
-        Route::get('/detail-news/{id}', 'detailNews')->name('client.news.detail');
-    });
 
     Route::get('/logout', [App\Http\Controllers\Client\AuthController::class, 'logout'])->name('client.logout');
 });

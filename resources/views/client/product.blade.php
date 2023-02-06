@@ -4,6 +4,7 @@
     @include('layouts.client.head')
 </head>
 <body>
+@include('sweetalert::alert')
   @include('sweetalert::alert')
   <!-- Back to top button -->
   <div class="back-to-top"></div>
@@ -36,7 +37,11 @@
                 <div class="header">
                   <img src="{{asset('image-save/image-product/' .  @$item->image)}}" alt="image product">
                   <div class="meta text-center">
+                    @if(auth('customer')->user()->id != NULL)
                     <a href="{{ route('client.product.detail' , Crypt::encryptString(@$item->id)) }}"><span class="mai-eye"></span></a>
+                    @else
+                    <a href="{{ route('client.login') }}"><span class="mai-eye"></span></a>
+                    @endif
                   </div>
                 </div>
                 <div class="body">
@@ -48,7 +53,6 @@
               </div>
             </div>
             @endforeach
-    
 
           </div>
         </div>
