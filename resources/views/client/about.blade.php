@@ -61,8 +61,14 @@
         <div class="col-lg-8 wow fadeInUp">
           <h1 class="text-center mb-3">Selamat datang di Pusat Kesehatan HDN </h1>
           <div class="text-lg">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt neque sit, explicabo vero nulla animi nemo quae cumque, eaque pariatur eum ut maxime! Tenetur aperiam maxime iure explicabo aut consequuntur. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt neque sit, explicabo vero nulla animi nemo quae cumque, eaque pariatur eum ut maxime! Tenetur aperiam maxime iure explicabo aut consequuntur.</p>
-            <p>Expedita iusto sunt beatae esse id nihil voluptates magni, excepturi distinctio impedit illo, incidunt iure facilis atque, inventore reprehenderit quidem aliquid recusandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium quod ad sequi atque accusamus deleniti placeat dignissimos illum nulla voluptatibus vel optio, molestiae dolore velit iste maxime, nobis odio molestias!</p>
+            <p>
+              Apotek HDN merupakan sebuah aplikasi dan situs web asal Indonesia yang bergerak di bidang kesehatan ,perusahaan aplikasi ini didirikan pada tahun 2018 di Painan.
+              beberapa investornya atara lain Blibli, Clermont, dan NSI Ventures. Apotek HDN mengumumkan kerjasama dengan Blibli pada bulan Mei 2020.
+            </p>
+            <p>
+              Melalui kerja sama tersebut Blibli akan menghubungkan fitur Gomed di dalam aplikasi Gojek dengan aplikasi Apotek HDN. Sehingga pengguna blibli akan langsung diarahkan ke aplikasi Apotek HDN untuk pemesanan kebutuhan medis seperti obat atau vitamin.
+              Selain itu, Apotek HDN juga menjalin kerjasama dengan beberapa perusahaan asuransi.
+            </p>
           </div>
         </div>
       </div>

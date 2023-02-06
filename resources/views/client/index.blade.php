@@ -16,7 +16,11 @@
       <div class="container text-center wow zoomIn">
         <span class="subhead">Let's make your life happier</span>
         <h1 class="display-4">Healthy Living</h1>
-        <a href="#" class="btn btn-primary">Cek Produk</a>
+        @if(@auth('customer')->user()->id == NULL)
+        <a href="{{ route('client.products') }}" class="btn btn-primary">Cek Produk</a>
+        @else
+        <a href="{{ route('client.products.log') }}" class="btn btn-primary">Cek Produk</a>
+        @endif
       </div>
     </div>
   </div>
@@ -59,7 +63,9 @@
         <div class="row align-items-center">
           <div class="col-lg-6 py-3 wow fadeInUp">
             <h1>Selamat datang di Kesehatan Anda</h1>
-            <p class="text-grey mb-4">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Accusantium aperiam earum ipsa eius, inventore nemo labore eaque porro consequatur ex aspernatur. Explicabo, excepturi accusantium! Placeat voluptates esse ut optio facilis!</p>
+            <p class="text-grey mb-4">Apotek HDN merupakan sebuah aplikasi dan situs web asal Indonesia yang bergerak di bidang kesehatan ,perusahaan aplikasi ini didirikan pada tahun 2018 di Painan.
+              beberapa investornya atara lain Blibli, Clermont, dan NSI Ventures. Apotek HDN mengumumkan kerjasama dengan Blibli pada bulan Mei 2020. Melalui kerja sama tersebut Blibli akan menghubungkan fitur Gomed di dalam aplikasi Gojek dengan aplikasi Apotek HDN. Sehingga pengguna blibli akan langsung diarahkan ke aplikasi Apotek HDN untuk pemesanan kebutuhan medis seperti obat atau vitamin.
+              Selain itu, Apotek HDN juga menjalin kerjasama dengan beberapa perusahaan asuransi.</p>
             <a href="{{ route('client.abouts') }}" class="btn btn-primary">Detail Kami</a>
           </div>
           <div class="col-lg-6 wow fadeInRight" data-wow-delay="400ms">

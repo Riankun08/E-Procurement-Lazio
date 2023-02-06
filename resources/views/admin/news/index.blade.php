@@ -48,7 +48,7 @@
                         <form action="{{ route($route.'destroy' , Crypt::encryptString($data->id)) }}" method="post">
                           @csrf
                           @method('DELETE')
-                          <butotn type="button" class="btn btn-danger btn-delete" data-id="{{ @$data->id }}" ><span class="ti-trash"></span></butotn>
+                          <button type="submit" class="btn btn-danger btn-delete"><span class="ti-trash"></span></button>
                         </form>
                         </div>
                       </div>

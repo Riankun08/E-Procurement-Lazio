@@ -64,6 +64,16 @@ class CheckOutController extends Controller
             Alert::error('Mohon Maaf!', 'isi jumlah barang dengan benar');
             return back();
         }
+
+        if($input['quantity'] == 0) {
+        Alert::error('Mohon Maaf!', 'isi jumlah barang dengan benar');
+        return back();
+        }
+
+        if($input['quantity'] == "0") {
+        Alert::error('Mohon Maaf!', 'isi jumlah barang dengan benar');
+        return back();
+        }
             
             $product = Product::find($decryptID);
          if($input['quantity'] <= $product->quantity) {

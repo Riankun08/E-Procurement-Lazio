@@ -4,19 +4,51 @@
         <div class="col-sm-6 col-lg-3 py-3">
           <h5>Perusahaan</h5>
           <ul class="footer-menu">
-            <li><a href="#">Tentang</a></li>
-            <li><a href="#">Berita</a></li>
-            <li><a href="#">Kontak</a></li>
+            @if(@auth('customer')->user()->id != NULL)
+            <li><a href="{{ route('client.abouts.log') }}">Tentang</a></li>
+            @else
+            <li><a href="{{ route('client.abouts') }}">Tentang</a></li>
+            @endif
+            @if(@auth('customer')->user()->id != NULL)
+            <li><a href="{{ route('client.news.log') }}">Berita</a></li>
+            @else
+            <li><a href="{{ route('client.news') }}">Berita</a></li>
+            @endif
+            @if(@auth('customer')->user()->id != NULL)
+            <li><a href="{{ route('client.contacts.log') }}">kontak</a></li>
+            @else
+            <li><a href="{{ route('client.contacts') }}">kontak</a></li>
+            @endif
           </ul>
         </div>
         <div class="col-sm-6 col-lg-3 py-3">
           <h5>Menu</h5>
           <ul class="footer-menu">
-            <li><a href="#">Beranda</a></li>
-            <li><a href="#">Tentang</a></li>
-            <li><a href="#">Produk</a></li>
-            <li><a href="#">Berita</a></li>
-            <li><a href="#">Kontak</a></li>
+            @if(@auth('customer')->user()->id != NULL)
+            <li><a href="{{ route('client.landing.log') }}">Beranda</a></li>
+            @else
+            <li><a href="{{ route('client.landing') }}">Beranda</a></li>
+            @endif
+            @if(@auth('customer')->user()->id != NULL)
+            <li><a href="{{ route('client.abouts.log') }}">Tentang</a></li>
+            @else
+            <li><a href="{{ route('client.abouts') }}">Tentang</a></li>
+            @endif
+            @if(@auth('customer')->user()->id != NULL)
+            <li><a href="{{ route('client.products.log') }}">Produk</a></li>
+            @else
+            <li><a href="{{ route('client.products') }}">Produk</a></li>
+            @endif
+            @if(@auth('customer')->user()->id != NULL)
+            <li><a href="{{ route('client.news.log') }}">Berita</a></li>
+            @else
+            <li><a href="{{ route('client.news') }}">Berita</a></li>
+            @endif
+            @if(@auth('customer')->user()->id != NULL)
+            <li><a href="{{ route('client.contacts.log') }}">kontak</a></li>
+            @else
+            <li><a href="{{ route('client.contacts') }}">kontak</a></li>
+            @endif
           </ul>
         </div>
         <div class="col-sm-6 col-lg-3 py-3">
@@ -29,9 +61,9 @@
         </div>
         <div class="col-sm-6 col-lg-3 py-3">
           <h5>Kontak</h5>
-          <p class="footer-link mt-2">351 Willow Street Franklin, MA 02038</p>
-          <a href="#" class="footer-link">701-573-7582</a>
-          <a href="#" class="footer-link">healthcare@temporary.net</a>
+          <p class="footer-link mt-2">jln sutan sahir No.24, Painan, kec. IV Jurai Kab. Pesisir Selatan</p>
+          <a href="#" class="footer-link">0895-1611-6280</a>
+          <a href="#" class="footer-link">apotekHDN@gmail.com</a>
 
           <h5 class="mt-3">Media Sosial</h5>
           <div class="footer-sosmed mt-3">
