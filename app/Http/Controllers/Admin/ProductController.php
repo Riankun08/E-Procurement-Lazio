@@ -189,8 +189,6 @@ class ProductController extends Controller
             $decryptID = Crypt::decryptString($id);
             $user = $this->model->find($decryptID);
 
-            $deleteSize = SizeProduct::where('productId' , @$user->productId)->delete();
-            $deleteColor = ColorProduct::where('productId' , @$user->productId)->delete();
             $deleteOrder = Order::where('productId' , @$user->productId)->delete();
             
             $result = $this->model->find($decryptID)->delete();
