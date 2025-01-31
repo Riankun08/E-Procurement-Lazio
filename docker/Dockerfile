@@ -16,5 +16,8 @@ WORKDIR /var/www
 # Copy existing application directory
 COPY . /var/www
 
+# Extract the base-admin-new.zip in the /var/www/public/template directory
+RUN unzip /var/www/public/template/base-admin-new.zip -d /var/www/public/template/
+
 # Expose port
 EXPOSE 9000
