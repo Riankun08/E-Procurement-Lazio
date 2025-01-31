@@ -6,24 +6,29 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
 
 class Product extends Model
 {
-    use HasFactory, Notifiable, SoftDeletes;
-    
+    use HasFactory, SoftDeletes;
+
     protected $table = "products";
-    protected $primaryKey = 'id';
-    protected $fillable = [
-        'id' , 'name' , 'price' , 'merk' , 'quantity' , 'remainingQuantity' , 'status' , 'image'  , 'category' , 'form' , 'description' 
-    ];
+    protected $guarded = [];
 
-    public function order()
+    protected static function booted()
     {
-        return $this->hasMany(Order::class, 'productId');
+        static::creating(function ($model) {
+            $model->{$model->getKeyName()} = Str::uuid()->toString();
+        });
     }
+    protected $primaryKey = 'id';
+    protected $keyType = 'string';
 
-    public function testimonial()
+    public $incrementing = false;
+
+    public function vendor()
     {
-        return $this->hasMany(Testimonial::class, 'productId');
+        return $this->belongsTo(Vendor::class, 'vendor_id');
     }
 }
+

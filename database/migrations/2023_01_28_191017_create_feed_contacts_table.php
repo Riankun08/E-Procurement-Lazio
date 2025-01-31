@@ -14,7 +14,7 @@ class CreateFeedContactsTable extends Migration
     public function up()
     {
         Schema::create('feed_contacts', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->string('name' , 255)->nullable();
             $table->string('email' , 255)->nullable();;
             $table->string('subject' , 255)->nullable();;

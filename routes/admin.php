@@ -44,38 +44,14 @@ Route::prefix('admin')->name('admin.')->group(function() {
             Route::delete('/products/destroy/{id}', 'destroy')->name('products.destroy');
         });
 
-        Route::controller(App\Http\Controllers\Admin\TestimonialController::class)->group(function () {
-            Route::get('/testimonials', 'index')->name('testimonials.index');
-            Route::get('/testimonials/create', 'create')->name('testimonials.create');
-            Route::post('/testimonials/create/store', 'store')->name('testimonials.store');
-            Route::get('/testimonials/edit/{id}', 'edit')->name('testimonials.edit');
-            Route::put('/testimonials/edit/update/{id}', 'update')->name('testimonials.update');
-            Route::get('/testimonials/show/{id}', 'show')->name('testimonials.show');
-            Route::delete('/testimonials/destroy/{id}', 'destroy')->name('testimonials.destroy');
-        });
-
-        Route::controller(App\Http\Controllers\Admin\OrderController::class)->group(function () {
-            Route::get('/orders', 'index')->name('orders.index');
-            Route::get('/orders/create', 'create')->name('orders.create');
-            Route::post('/orders/create/store', 'store')->name('orders.store');
-            Route::get('/orders/edit/{id}', 'edit')->name('orders.edit');
-            Route::put('/orders/edit/update/{id}', 'update')->name('orders.update');
-            Route::get('/orders/show/{id}', 'show')->name('orders.show');
-            Route::delete('/orders/destroy/{id}', 'destroy')->name('orders.destroy');
-        });
-
-        Route::controller(App\Http\Controllers\Admin\HotSaleController::class)->group(function () {
-            Route::get('/hotSales', 'index')->name('hotSales.index');
-        });
-
-        Route::controller(App\Http\Controllers\Admin\NewsController::class)->group(function () {
-            Route::get('/news', 'index')->name('news.index');
-            Route::get('/news/create', 'create')->name('news.create');
-            Route::post('/news/create/store', 'store')->name('news.store');
-            Route::get('/news/edit/{id}', 'edit')->name('news.edit');
-            Route::put('/news/edit/update/{id}', 'update')->name('news.update');
-            Route::get('/news/show/{id}', 'show')->name('news.show');
-            Route::delete('/news/destroy/{id}', 'destroy')->name('news.destroy');
+        Route::controller(App\Http\Controllers\Admin\VendorController::class)->group(function () {
+            Route::get('/vendors', 'index')->name('vendors.index');
+            Route::get('/vendors/create', 'create')->name('vendors.create');
+            Route::post('/vendors/create/store', 'store')->name('vendors.store');
+            Route::get('/vendors/edit/{id}', 'edit')->name('vendors.edit');
+            Route::put('/vendors/edit/update/{id}', 'update')->name('vendors.update');
+            Route::get('/vendors/show/{id}', 'show')->name('vendors.show');
+            Route::delete('/vendors/destroy/{id}', 'destroy')->name('vendors.destroy');
         });
 
     });

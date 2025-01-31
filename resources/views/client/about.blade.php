@@ -24,73 +24,31 @@
     </div> <!-- .banner-section -->
   </div> <!-- .page-banner -->
 
-  <div class="page-section bg-light">
-    <div class="container">
-      <div class="row justify-content-center text-center">
-        <div class="col-md-4 py-3 wow zoomIn">
-          <div class="card-service">
-            <div class="circle-shape bg-secondary text-white">
-              <span class="mai-chatbubbles-outline"></span>
-            </div>
-            <p><span>Chat</span> with a doctors</p>
-          </div>
-        </div>
-        <div class="col-md-4 py-3 wow zoomIn">
-          <div class="card-service">
-            <div class="circle-shape bg-primary text-white">
-              <span class="mai-shield-checkmark"></span>
-            </div>
-            <p><span>One</span>-Health Protection</p>
-          </div>
-        </div>
-        <div class="col-md-4 py-3 wow zoomIn">
-          <div class="card-service">
-            <div class="circle-shape bg-accent text-white">
-              <span class="mai-basket"></span>
-            </div>
-            <p><span>One</span>-Health Pharmacy</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <div class="page-section">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-8 wow fadeInUp">
-          <h1 class="text-center mb-3">Selamat datang di Pusat Kesehatan HDN </h1>
+          <a class="navbar-brand" href="#" style="width: 100%;text-align: center;">
+            <img src="{{asset('template/one-health/assets/img/logo-apotek-hdn-vol-1.png')}}" class="logo-navbar" alt="">
+          </a>
+          <br>
+          <br>
+          {{-- <h1 class="text-center mb-3">Selamat datang di E - Procurement </h1> --}}
           <div class="text-lg">
             <p>
-              Apotek HDN merupakan sebuah aplikasi dan situs web asal Indonesia yang bergerak di bidang kesehatan ,perusahaan aplikasi ini didirikan pada tahun 2018 di Painan.
-              beberapa investornya atara lain Blibli, Clermont, dan NSI Ventures. Apotek HDN mengumumkan kerjasama dengan Blibli pada bulan Mei 2020.
-            </p>
-            <p>
-              Melalui kerja sama tersebut Blibli akan menghubungkan fitur Gomed di dalam aplikasi Gojek dengan aplikasi Apotek HDN. Sehingga pengguna blibli akan langsung diarahkan ke aplikasi Apotek HDN untuk pemesanan kebutuhan medis seperti obat atau vitamin.
-              Selain itu, Apotek HDN juga menjalin kerjasama dengan beberapa perusahaan asuransi.
+              Selamat datang di platform e-Procurement kami, solusi digital yang mempermudah proses pengadaan barang dan jasa secara transparan, efisien, dan akuntabel. Kami hadir untuk membantu organisasi, instansi pemerintah, serta perusahaan dalam menjalankan proses pengadaan dengan cara yang lebih modern dan terintegrasi.
+              <br><br>
+              Kami mengutamakan transparansi dan keamanan dalam setiap transaksi, memastikan bahwa setiap langkah pengadaan berlangsung dengan adil dan sesuai regulasi yang berlaku. Dengan menggunakan teknologi terbaru, platform kami memungkinkan pengguna untuk melakukan proses tender, seleksi, dan pemilihan vendor dengan cepat dan mudah.
+              <br><br>
+              Misi kami adalah untuk memberikan pengalaman pengadaan yang lebih baik dengan memberikan solusi yang mudah digunakan, mengurangi birokrasi, dan meningkatkan efisiensi operasional. Kami berkomitmen untuk mendukung pertumbuhan ekonomi yang lebih inklusif dengan membuka peluang bagi penyedia barang dan jasa dari berbagai sektor.
+              <br><br>
+              Bergabunglah dengan kami dalam menciptakan ekosistem pengadaan yang lebih terbuka, terpercaya, dan berkelanjutan!
             </p>
           </div>
         </div>
       </div>
     </div>
   </div>
-
-  <div class="page-section banner-home bg-image" style="background-image: url('{{asset('template/one-health/assets/img/banner-pattern.svg')}}');">
-    <div class="container py-5 py-lg-0">
-      <div class="row align-items-center">
-        <div class="col-lg-4 wow zoomIn">
-          <div class="img-banner d-none d-lg-block">
-            <img src="{{asset('template/one-health/assets/img/mobile_app.png')}}" alt="">
-          </div>
-        </div>
-        <div class="col-lg-8 wow fadeInRight">
-          <h1 class="font-weight-normal mb-3">Get easy access of all features using One Health Application</h1>
-          <a href="#"><img src="{{asset('template/one-health/assets/img/google_play.svg')}}" alt=""></a>
-          <a href="#" class="ml-2"><img src="{{asset('template/one-health/assets/img/app_store.svg')}}" alt=""></a>
-        </div>
-      </div>
-    </div>
-  </div> <!-- .banner-home -->
 
 @include('layouts.client.footer')
 

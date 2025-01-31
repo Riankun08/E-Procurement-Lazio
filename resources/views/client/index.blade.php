@@ -14,8 +14,8 @@
   <div class="page-hero bg-image overlay-dark" style="background-image: url('{{asset('template/one-health/assets/img/bg_image_1.jpg')}}');">
     <div class="hero-section">
       <div class="container text-center wow zoomIn">
-        <span class="subhead">Let's make your life happier</span>
-        <h1 class="display-4">Healthy Living</h1>
+        <span class="subhead">Let's make your life Easy</span>
+        <h1 class="display-4">E-Procurement</h1>
         @if(@auth('customer')->user()->id == NULL)
         <a href="{{ route('client.products') }}" class="btn btn-primary">Cek Produk</a>
         @else
@@ -25,115 +25,42 @@
     </div>
   </div>
 
-
-  <div class="bg-light">
-    <div class="page-section py-3 mt-md-n5 custom-index">
-      <div class="container">
-        <div class="row justify-content-center text-center">
-          <div class="col-md-4 py-3 py-md-0">
-            <div class="card-service wow fadeInUp">
-              <div class="circle-shape bg-secondary text-white">
-                <span class="mai-chatbubbles-outline"></span>
-              </div>
-              <p><span>Chat</span> with a doctors</p>
-            </div>
-          </div>
-          <div class="col-md-4 py-3 py-md-0">
-            <div class="card-service wow fadeInUp">
-              <div class="circle-shape bg-primary text-white">
-                <span class="mai-shield-checkmark"></span>
-              </div>
-              <p><span>One</span>-Health Protection</p>
-            </div>
-          </div>
-          <div class="col-md-4 py-3 py-md-0">
-            <div class="card-service wow fadeInUp">
-              <div class="circle-shape bg-accent text-white">
-                <span class="mai-basket"></span>
-              </div>
-              <p><span>One</span>-Health Pharmacy</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> <!-- .page-section -->
-
-    <div class="page-section pb-0">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-6 py-3 wow fadeInUp">
-            <h1>Selamat datang di Kesehatan Anda</h1>
-            <p class="text-grey mb-4">Apotek HDN merupakan sebuah aplikasi dan situs web asal Indonesia yang bergerak di bidang kesehatan ,perusahaan aplikasi ini didirikan pada tahun 2018 di Painan.
-              beberapa investornya atara lain Blibli, Clermont, dan NSI Ventures. Apotek HDN mengumumkan kerjasama dengan Blibli pada bulan Mei 2020. Melalui kerja sama tersebut Blibli akan menghubungkan fitur Gomed di dalam aplikasi Gojek dengan aplikasi Apotek HDN. Sehingga pengguna blibli akan langsung diarahkan ke aplikasi Apotek HDN untuk pemesanan kebutuhan medis seperti obat atau vitamin.
-              Selain itu, Apotek HDN juga menjalin kerjasama dengan beberapa perusahaan asuransi.</p>
-            <a href="{{ route('client.abouts') }}" class="btn btn-primary">Detail Kami</a>
-          </div>
-          <div class="col-lg-6 wow fadeInRight" data-wow-delay="400ms">
-            <div class="img-place custom-img-1">
-              <img src="{{asset('template/one-health/assets/img/bg-doctor.png')}}" alt="">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> <!-- .bg-light -->
-  </div> <!-- .bg-light -->
-
   <div class="page-section bg-light">
     <div class="container">
-      <h1 class="text-center wow fadeInUp">Berita Terbaru</h1>
+      <h1 class="text-center wow fadeInUp">Vendor Terbaru</h1>
       <div class="row mt-5">
         
-        @foreach ($news as $item)
+        @foreach ($vendor as $item)
         <div class="col-lg-4 py-2 wow zoomIn">
           <div class="card-blog">
             <div class="header">
-              <div class="post-category">
-                <a href="#">{{@$item->theme}}</a>
-              </div>
               <a href="blog-details.html" class="post-thumb">
-                <img src="{{asset('image-save/image-news/' . @$item->image)}}" alt="">
+                <img src="{{asset('image-save/image-vendor/' . @$item->user->image)}}" alt="">
               </a>
             </div>
             <div class="body">
-              <h5 class="post-title"><a href="blog-details.html">{{  @$item->title }}</a></h5>
-              <div class="site-info">
+              <h6><a href="blog-details.html">{{  @$item->name }}</a></h6>
+              <p class="post-title" style="line-height: 25px"><a href="blog-details.html">{{  @$item->address }}</a></p>
+              {{-- <div class="site-info">
                 <div class="avatar mr-2">
                   <div class="avatar-img">
-                    <img src="{{asset('template/one-health/assets/img/logo-apotek-hdn.jpeg')}}" alt="">
+                    <img src="{{asset('template/one-health/assets/img/logo-apotek-hdn-vol-1.png')}}" alt="">
                   </div>
                 </div>
-                <span class="mai-time"></span> {{ date('d-F-Y' , strtotime(@$item->datePost)) }}
-              </div>
+              </div> --}}
             </div>
           </div>
         </div>
         @endforeach
 
 
-        <div class="col-12 text-center mt-4 wow zoomIn">
+        {{-- <div class="col-12 text-center mt-4 wow zoomIn">
           <a href="{{ route('client.news') }}" class="btn btn-primary">Baca selengkapnya</a>
-        </div>
+        </div> --}}
 
       </div>
     </div>
   </div> <!-- .page-section -->
-
-  <div class="page-section banner-home bg-image" style="background-image: url(../assets/img/banner-pattern.svg);">
-    <div class="container py-5 py-lg-0">
-      <div class="row align-items-center">
-        <div class="col-lg-4 wow zoomIn">
-          <div class="img-banner d-none d-lg-block">
-            <img src="{{asset('template/one-health/assets/img/mobile_app.png')}}" alt="">
-          </div>
-        </div>
-        <div class="col-lg-8 wow fadeInRight">
-          <h1 class="font-weight-normal mb-3">Get easy access of all features using One Health Application</h1>
-          <a href="#"><img src="{{asset('template/one-health/assets/img/google_play.svg')}}" alt=""></a>
-          <a href="#" class="ml-2"><img src="{{asset('template/one-health/assets/img/app_store.svg')}}" alt=""></a>
-        </div>
-      </div>
-    </div>
-  </div> <!-- .banner-home -->
 
 @include('layouts.client.footer')
 

@@ -3,17 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use RealRashid\SweetAlert\Facades\Alert;
-use Illuminate\Support\Facades\Crypt;
 use App\Http\Controllers\Controller;
+
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\View;
 use Illuminate\Http\Request;
-use App\Models\ColorProduct;
-use App\Models\SizeProduct;
+
 use App\Models\Product;
-use App\Models\Color;
-use App\Models\Order;
-use App\Models\Size;
+use App\Models\Vendor;
 
 class ProductController extends Controller
 {
@@ -39,7 +37,12 @@ class ProductController extends Controller
     public function index()
     {
         try {
-            $datas = $this->model->all();
+            $vendor = Vendor::where('user_id', auth()->user()->id)->first();
+            if ($vendor) {
+                $datas = $this->model->where('vendor_id', $vendor->id)->with('vendor')->get();
+            } else {
+                $datas = $this->model->with('vendor')->get();
+            }
             return view($this->view.'index' , compact('datas'));
         } catch (DecryptException $e) {
             Alert::error('error!', 'validation url');
@@ -55,7 +58,31 @@ class ProductController extends Controller
     public function create()
     {
         try  { 
-            return view($this->view.'create');
+            $vendor = Vendor::where('approve', true)->get();
+            $category = [
+                "Barang Konsumsi",
+                "Bahan Makanan dan Minuman",
+                "Alat Tulis Kantor",
+                "Peralatan Kebersihan",
+                "Perlengkapan Kesehatan",
+                "Barang Elektronik",
+                "Komputer dan Aksesori",
+                "Perangkat Jaringan",
+                "Alat Pengukur dan Pengendali",
+                "Peralatan Kantor",
+                "Meja dan Kursi Kantor",
+                "Lemari Arsip",
+                "Peralatan Presentasi",
+                "Alat Keamanan Kantor",
+                "Jasa Konstruksi",
+                "Pembangunan Gedung dan Infrastruktur",
+                "Renovasi dan Pemeliharaan",
+                "Penyediaan Material Konstruksi",
+                "Jasa Profesional",
+                "Konsultan IT",
+                "Lainnya",
+            ];
+            return view($this->view.'create', compact('vendor', 'category'));
         } catch (DecryptException $e) {
             Alert::error('error!', 'validation url');
             return back();
@@ -74,24 +101,22 @@ class ProductController extends Controller
             $input = $request->all();
             
             $this->validate($request, [
-                'image' => 'required|file|image|mimes:jpeg,png,jpg',
+                'image' => 'required|file|image|mimes:jpeg,png,jpg,webp',
             ]);
-     
+            
             $file = $request->file('image');
             $nama_file = time()."_".$file->getClientOriginalName();
             $tujuan_upload = $this->path;
             $file->move($tujuan_upload,$nama_file);
 
             $result = $this->model->create([
+                'vendor_id' => $input['vendor_id'],
                 'name' => $input['name'],
                 'price' => $input['price'],
-                'merk' => $input['merk'],
                 'image' => $nama_file,
                 'quantity' => $input['quantity'],
                 'status' => $input['status'],
-                'remainingQuantity' => $input['quantity'],
                 'category' => $input['category'],
-                'form' => $input['form'],
                 'description' => $input['description'],
             ]);
     
@@ -115,7 +140,31 @@ class ProductController extends Controller
     {
         $decryptID = Crypt::decryptString($id);
         $data = $this->model->find($decryptID);
-        return view($this->view.'detail' , compact('data'));
+        $vendor = Vendor::where('approve', true)->get();
+        $category = [
+            "Barang Konsumsi",
+            "Bahan Makanan dan Minuman",
+            "Alat Tulis Kantor",
+            "Peralatan Kebersihan",
+            "Perlengkapan Kesehatan",
+            "Barang Elektronik",
+            "Komputer dan Aksesori",
+            "Perangkat Jaringan",
+            "Alat Pengukur dan Pengendali",
+            "Peralatan Kantor",
+            "Meja dan Kursi Kantor",
+            "Lemari Arsip",
+            "Peralatan Presentasi",
+            "Alat Keamanan Kantor",
+            "Jasa Konstruksi",
+            "Pembangunan Gedung dan Infrastruktur",
+            "Renovasi dan Pemeliharaan",
+            "Penyediaan Material Konstruksi",
+            "Jasa Profesional",
+            "Konsultan IT",
+            "Lainnya",
+        ];
+        return view($this->view.'detail' , compact('data', 'vendor', 'category'));
     }
 
     /**
@@ -128,7 +177,31 @@ class ProductController extends Controller
     {
         $decryptID = Crypt::decryptString($id);
         $data = $this->model->find($decryptID);
-        return view($this->view.'edit' , compact('data'));
+        $vendor = Vendor::where('approve', true)->get();
+        $category = [
+            "Barang Konsumsi",
+            "Bahan Makanan dan Minuman",
+            "Alat Tulis Kantor",
+            "Peralatan Kebersihan",
+            "Perlengkapan Kesehatan",
+            "Barang Elektronik",
+            "Komputer dan Aksesori",
+            "Perangkat Jaringan",
+            "Alat Pengukur dan Pengendali",
+            "Peralatan Kantor",
+            "Meja dan Kursi Kantor",
+            "Lemari Arsip",
+            "Peralatan Presentasi",
+            "Alat Keamanan Kantor",
+            "Jasa Konstruksi",
+            "Pembangunan Gedung dan Infrastruktur",
+            "Renovasi dan Pemeliharaan",
+            "Penyediaan Material Konstruksi",
+            "Jasa Profesional",
+            "Konsultan IT",
+            "Lainnya",
+        ];
+        return view($this->view.'edit' , compact('data', 'vendor', 'category'));
     }
 
     /**
@@ -145,27 +218,37 @@ class ProductController extends Controller
 
             $input = $request->all();
     
-            $this->validate($request, [
-                'image' => 'required|file|image|mimes:jpeg,png,jpg',
-            ]);
+            // $this->validate($request, [
+            //     'image' => 'required|file|image|mimes:jpeg,png,jpg,webp',
+            // ]);
      
-            $file = $request->file('image');
-            $nama_file = time()."_".$file->getClientOriginalName();
-            $tujuan_upload = $this->path;
-            $file->move($tujuan_upload,$nama_file);
-
-            $result = $this->model->find($decryptID)->update([
-                'name' => $input['name'],
-                'price' => $input['price'],
-                'merk' => $input['merk'],
-                'image' => $nama_file,
-                'quantity' => $input['quantity'],
-                'status' => $input['status'],
-                'remainingQuantity' => $input['quantity'],
-                'category' => $input['category'],
-                'form' => $input['form'],
-                'description' => $input['description'],
-            ]);
+            if ($request->hasFile('image')) {
+                $file = $request->file('image');
+                $nama_file = time()."_".$file->getClientOriginalName();
+                $tujuan_upload = $this->path;
+                $file->move($tujuan_upload,$nama_file);
+    
+                $result = $this->model->find($decryptID)->update([
+                    'vendor_id' => $input['vendor_id'],
+                    'name' => $input['name'],
+                    'price' => $input['price'],
+                    'image' => $nama_file,
+                    'quantity' => $input['quantity'],
+                    'status' => $input['status'],
+                    'category' => $input['category'],
+                    'description' => $input['description'],
+                ]);
+            } else {
+                $result = $this->model->find($decryptID)->update([
+                    'vendor_id' => $input['vendor_id'],
+                    'name' => $input['name'],
+                    'price' => $input['price'],
+                    'quantity' => $input['quantity'],
+                    'status' => $input['status'],
+                    'category' => $input['category'],
+                    'description' => $input['description'],
+                ]);
+            }
 
             if($result){
                 Alert::success('Update Success!', 'Success Update data '.$this->title);

@@ -35,6 +35,14 @@ Route::controller(App\Http\Controllers\Client\AuthController::class)->group(func
     Route::post('/register/create/acccount', 'registerStore')->name('client.register.submit');
 });
 
+Route::controller(App\Http\Controllers\Client\LandingPageController::class)->group(function () {
+    Route::get('/detail/{id}', 'showDetail')->name('client.product.detail');
+    Route::post('/checkout-store-order/{id}', 'store')->name('client.store.order');
+    Route::get('/checkout-order/{id}', 'showPayOrder')->name('client.chekout.order');
+    Route::post('/checkout-order-success/{id}', 'checkoutOrderSuccess')->name('client.success.order');
+    Route::get('/order-success/{id}', 'OrderSuccess')->name('client.page.success.order');
+});
+
 Route::group(['middleware' => ['customer.auth']], function(){
     Route::controller(App\Http\Controllers\Client\LandingPageController::class)->group(function () {
         Route::get('/open-shop', 'index')->name('client.landing.log');
@@ -45,13 +53,6 @@ Route::group(['middleware' => ['customer.auth']], function(){
         Route::post('/comment/store', 'storeComment')->name('client.comment.store');
     });
 
-    Route::controller(App\Http\Controllers\Client\CheckOutController::class)->group(function () {
-        Route::get('/detail/{id}', 'showDetail')->name('client.product.detail');
-        Route::post('/checkout-store-order/{id}', 'store')->name('client.store.order');
-        Route::get('/checkout-order/{id}', 'showPayOrder')->name('client.chekout.order');
-        Route::post('/checkout-order-success/{id}', 'checkoutOrderSuccess')->name('client.success.order');
-        Route::get('/order-success/{id}', 'OrderSuccess')->name('client.page.success.order');
-    });
     
     Route::controller(App\Http\Controllers\Client\ProfileController::class)->group(function () {
         Route::get('/profile/{id}', 'index')->name('client.profile');

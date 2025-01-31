@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\User;
+use App\Models\Vendor;
 
 class UserConttroller extends Controller
 {
@@ -178,7 +179,9 @@ class UserConttroller extends Controller
         try {
             $decryptID = Crypt::decryptString($id);
             $user = $this->model->find($decryptID);
-            $result = $this->model->find($decryptID)->delete();
+            $result = $this->model->find($decryptID)->forceDelete();
+
+            $vendor = Vendor::where('user_id' , $user->id)->forceDelete();
             
             if ($result) {
                 Alert::success('Delete Success!', 'Success delete data '.$this->title);

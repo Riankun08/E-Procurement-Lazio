@@ -22,72 +22,19 @@
             </div>
             <div class="col-md-6 col-lg-6 py-3 wow zoomIn">
                 <h3 class="fw-bold">{{ @$data->name }}</h3>
+                <br>
+                <h6>Vendor : {{ @$data->vendor->name }}</h6>
+                <br>
                 <h6>Harga : Rp. {{ number_format(@$data->price) }}</h6>
+                <br>
                 <h6>Kategori : {{ @$data->category }}</h6>
-                <h6>Bentuk : {{ @$data->form }}</h6>
+                <br>
                 <h6>Jumlah : {{ @$data->quantity }}</h6>
                 <br>
                 <p class="text-sm">{{@$data->description}}</p>
-                <form action="{{ route('client.store.order' , Crypt::encryptString(@$data->id)) }}" method="POST">
-                    @csrf
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="col-md-12">
-                            <label for="quantity" class="m-1">Jumlah Pembelian</label>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="cart-totals">
-                                <input type="button" value="-" id="minus-button" class="m-1" for="quantity">
-                                <input type="number" id="quantity" name="quantity" class="form-control m-1" value="1" min="0" >
-                                <input type="button" value="+" id="plus-button" class="m-1" for="quantity">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <button type="submit" class="btn btn-primary m-3">Checkout</button>
-                    </div>
-                </div>
-                </form>
             </div>
         </div>
         </div>
-      </div>
-      <div class="row justify-content-center">
-        <dov class="col-md-12">
-            <h2 class="mb-3 text-center">Testimonial Pengguna</h2>
-        </dov>
-        @foreach ($testimonial as $item)
-        <div class="col-md-6 mb-3">
-            <div class="card">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-3 text-center">
-                                @if(@$item->user->image == NULL)
-                                    @if(@$item->user->gender == "Perempuan")
-                                    <img src="{{ asset('image-save/famale-profile.svg') }}" class="img-fluid" alt="image user">
-                                    @elseif(@$item->user->gender == "Laki - Laki")
-                                    <img src="{{ asset('image-save/man-profile.svg') }}" class="img-fluid" alt="image user">
-                                    @else
-                                    <img src="{{ asset('image-save/man-profile.svg') }}" class="img-fluid" alt="image user">
-                                    @endif
-                                @else
-                                <img src="{{ asset('image-save/image-user/' . @$item->user->image) }}" class="img-fluid" alt="image user">
-                                @endif
-                            </div>
-                            <div class="col-md-6">
-                                <div class="m-1">
-                                    <h5>{{@$item->user->name}}</h5>
-                                    <p class="text-sm">{{@$item->message}}</p>
-                                </div>
-                            </div>
-                            <div class="col-md-3 text-center">
-                                <img src="{{ asset('image-save/image-testimonial/' . @$item->image) }}" class="img-fluid" alt="image testimonial">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @endforeach
       </div>
     </div> <!-- .container -->
   </div> <!-- .page-section -->

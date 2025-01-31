@@ -54,16 +54,8 @@
           <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
             <div class="card card-light-blue">
               <div class="card-body">
-                <p class="mb-4">Total Order</p>
-                <p class="fs-30 mb-2">{{ @$order }}</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 stretch-card transparent">
-            <div class="card card-light-danger">
-              <div class="card-body">
-                <p class="mb-4">Total Testimonial</p>
-                <p class="fs-30 mb-2">{{ @$testimonial }}</p>
+                <p class="mb-4">Total Vendor</p>
+                <p class="fs-30 mb-2">{{ @$vendor }}</p>
               </div>
             </div>
           </div>

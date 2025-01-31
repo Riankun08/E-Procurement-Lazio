@@ -20,10 +20,9 @@
                 <thead>
                   <tr>
                     <th>No</th>
+                    <th>Vendor</th>
                     <th>Nama</th>
-                    <th>Merk</th>
                     <th>Kategori</th>
-                    <th>Bentuk</th>
                     <th>Jumlah</th>
                     <th>Status</th>
                     <th class="text-center">Aksi</th>
@@ -34,13 +33,11 @@
                   @foreach ($datas as $data)
                   <tr>
                     <td>{{ @$no++ }}</td>
+                    <td>{{ @$data->vendor->name }}</td>
                     <td>{{ @$data->name }}</td>
-                    <td>{{ @$data->merk }}</td>
                     <td>{{ @$data->category }}</td>
-                    <td>{{ @$data->form }}</td>
                     <td>{{ @$data->quantity }}</td>
                     <td>{{ @$data->status }}</td>
-                    <td><label class="badge badge-success">{{ @$data->datePost }}</label></td>
                     <td class="text-center">
                       <div class="d-flex justify-content-center">
                         <div class="m-1">

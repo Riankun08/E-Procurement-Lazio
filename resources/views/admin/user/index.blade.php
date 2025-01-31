@@ -42,12 +42,12 @@
                   <td>{{ @$data->role }}</td>
                   <td class="text-center">
                     <div class="d-flex justify-content-center">
-                      <div class="m-1">
+                      {{-- <div class="m-1">
                         <a href="{{ route($route.'show' , Crypt::encryptString($data->id)) }}" class="btn btn-info"><span class="ti-eye"></span></a>
                       </div>
                       <div class="m-1">
                       <a href="{{ route($route.'edit' , Crypt::encryptString($data->id)) }}" class="btn btn-success"><span class="ti-pencil-alt"></i></a>
-                      </div>
+                      </div> --}}
                       <div class="m-1">
                       <form action="{{ route($route.'destroy' , Crypt::encryptString($data->id)) }}" method="post">
                         @csrf

@@ -184,14 +184,17 @@
       </a>
       <div class="collapse" id="ui-basic">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="{{ route('admin.news.index') }}">Berita</a></li>
-          <li class="nav-item"> <a class="nav-link" href="{{ route('admin.products.index') }}">Produk</a></li>
-          <li class="nav-item"> <a class="nav-link" href="{{ route('admin.users.index') }}">Pengguna</a></li>
-          <li class="nav-item"> <a class="nav-link" href="{{ route('admin.testimonials.index') }}">Testimonial</a></li>
+        @if (auth()->user()->role == 'vendor')
+            <li class="nav-item"> <a class="nav-link" href="{{ route('admin.products.index') }}">Produk</a></li>
+        @else
+            <li class="nav-item"> <a class="nav-link" href="{{ route('admin.vendors.index') }}">Vendor</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{ route('admin.products.index') }}">Produk</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{ route('admin.users.index') }}">Pengguna</a></li>
+        @endif
         </ul>
       </div>
     </li>
-    <li class="nav-item {{ (request()->is('admin/orders' , 'admin/hotSales')) ? 'active' : '' }}">
+    {{-- <li class="nav-item {{ (request()->is('admin/orders' , 'admin/hotSales')) ? 'active' : '' }}">
       <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
         <i class="icon-bar-graph menu-icon"></i>
         <span class="menu-title">Data Order</span>
@@ -203,6 +206,6 @@
           <li class="nav-item {{ (request()->is('admin/hotSales')) ? 'active' : '' }}"> <a class="nav-link" href="{{ route('admin.hotSales.index') }}">Kalkulasi</a></li>
         </ul>
       </div>
-    </li>
+    </li> --}}
   </ul>
 </nav>

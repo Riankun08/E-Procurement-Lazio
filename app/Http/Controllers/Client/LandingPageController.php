@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use App\Models\Testimonial;
 use App\Models\Product;
 use App\Models\News;
+use App\Models\Vendor;
 use Carbon\Carbon;
 
 class LandingPageController extends Controller
@@ -25,10 +26,9 @@ class LandingPageController extends Controller
     public function index()
     {
         $title = "Beranda";
-        $testimonial = Testimonial::where('status' , 'publish')->get();
         $product = Product::where('status' , 'publish')->get();
-        $news = News::paginate(3);
-        return view('client.index' , compact('product' , 'testimonial' , 'title' , 'news'));
+        $vendor = Vendor::where('approve' , true)->get();
+        return view('client.index' , compact('product' , 'title' , 'vendor'));
     }
 
     /**
@@ -60,6 +60,13 @@ class LandingPageController extends Controller
     {
         $title = "Kontak";
         return view('client.contact' , compact('title'));
+    }
+
+    public function showDetail($id)
+    {
+        $decryptID = Crypt::decryptString($id);
+        $data = Product::with('vendor')->find($decryptID);
+        return view('client.detail.detail-product' , compact('data'));
     }
 
     /**

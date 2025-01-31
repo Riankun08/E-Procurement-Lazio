@@ -17,7 +17,7 @@
 
     <link rel="shortcut icon" href="{{asset('template/one-health/assets/img/logo-apotek-hdn.jpeg')}}" type="image/x-icon">
 
-    <title>login Apotek HDN</title>
+    <title>login Rian E-Procurement</title>
 </head>
 <body>
 <!-- Sweetalert -->
@@ -30,7 +30,7 @@
       <div class="container">
         <div class="row align-items-center justify-content-center">
           <div class="col-md-7">
-            <h3>Login to <strong>Apotek HDN</strong></h3>
+            <h3>Login to <strong>Rian E-Procurement</strong></h3>
             <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p>
             <form action="{{ route('client.login.submit') }}" method="post">
                 @csrf

@@ -5,7 +5,7 @@
 
 <meta name="copyright" content="MACode ID, https://macodeid.com/">
 
-<title>Apotek HDN | {{ @$title }}</title>
+<title>Rian E-Procurement | {{ @$title }}</title>
 
 <link rel="stylesheet" href="{{asset('template/one-health/assets/css/maicons.css')}}">
 

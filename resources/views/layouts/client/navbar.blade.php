@@ -1,26 +1,4 @@
 <header>
-    <div class="topbar">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-8 text-sm">
-            <div class="site-info">
-              <a href="#"><span class="mai-call text-primary"></span> +00 123 4455 6666</a>
-              <span class="divider">|</span>
-              <a href="#"><span class="mai-mail text-primary"></span> mail@example.com</a>
-            </div>
-          </div>
-          <div class="col-sm-4 text-right text-sm">
-            <div class="social-mini-button">
-              <a href="#"><span class="mai-logo-facebook-f"></span></a>
-              <a href="#"><span class="mai-logo-twitter"></span></a>
-              <a href="#"><span class="mai-logo-dribbble"></span></a>
-              <a href="#"><span class="mai-logo-instagram"></span></a>
-            </div>
-          </div>
-        </div> <!-- .row -->
-      </div> <!-- .container -->
-    </div> <!-- .topbar -->
-
     <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
       <div class="container">
         <a class="navbar-brand" href="#"><img src="{{asset('template/one-health/assets/img/logo-apotek-hdn-vol-1.png')}}" class="logo-navbar" alt=""></a>
@@ -58,15 +36,6 @@
               </li>
               @endif
               @if(@auth('customer')->user()->id != NULL)
-              <li class="nav-item {{ (request()->is('news/open-shop')) ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('client.news.log') }}">Berita</a>
-              </li>
-              @else
-              <li class="nav-item {{ (request()->is('news')) ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('client.news') }}">Berita</a>
-              </li>
-              @endif
-              @if(@auth('customer')->user()->id != NULL)
               <li class="nav-item {{ (request()->is('contacts/open-shop')) ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('client.contacts.log') }}">Kontak</a>
               </li>
@@ -77,9 +46,9 @@
               @endif
             <li class="nav-item">
               @if(@auth('customer')->user()->id != NULL)
-              <a class="btn btn-primary ml-lg-3" href="{{ route('client.profile' , Crypt::encryptString(auth('customer')->user()->id)) }}"><span class="icon mai-person"></span> {{ auth('customer')->user()->name }}</a>
+              {{-- <a class="btn btn-primary ml-lg-3" href="{{ route('client.profile' , Crypt::encryptString(auth('customer')->user()->id)) }}"><span class="icon mai-person"></span> {{ auth('customer')->user()->name }}</a> --}}
               @else
-              <a class="btn btn-primary ml-lg-3" href="{{ route('client.login') }}">Login / Register</a>
+              <a class="btn btn-primary ml-lg-3" href="{{ route('client.register') }}">Register Vendor</a>
               @endif
             </li>
           </ul>

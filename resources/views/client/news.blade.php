@@ -92,8 +92,8 @@
 
             <div class="sidebar-block">
               <h3 class="sidebar-title">Artikel</h3>
-              <p>Apotek HDN merupakan sebuah aplikasi dan situs web asal Indonesia yang bergerak di bidang kesehatan ,perusahaan aplikasi ini didirikan pada tahun 2018 di Painan.
-                beberapa investornya atara lain Blibli, Clermont, dan NSI Ventures. Apotek HDN mengumumkan kerjasama dengan Blibli pada bulan Mei 2020. Melalui kerja sama tersebut Blibli akan menghubungkan fitur Gomed di dalam aplikasi Gojek dengan aplikasi Apotek HDN.</p>
+              <p>Rian E-Procurement merupakan sebuah aplikasi dan situs web asal Indonesia yang bergerak di bidang kesehatan ,perusahaan aplikasi ini didirikan pada tahun 2018 di Painan.
+                beberapa investornya atara lain Blibli, Clermont, dan NSI Ventures. Rian E-Procurement mengumumkan kerjasama dengan Blibli pada bulan Mei 2020. Melalui kerja sama tersebut Blibli akan menghubungkan fitur Gomed di dalam aplikasi Gojek dengan aplikasi Rian E-Procurement.</p>
             </div>
           </div>
         </div> 

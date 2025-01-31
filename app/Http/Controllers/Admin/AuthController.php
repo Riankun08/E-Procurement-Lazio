@@ -31,7 +31,7 @@ class AuthController extends Controller
     {
         $input = $request->all();
 
-        if (Auth::attempt(['email' => $input['email'] , 'role' => 'admin' , 'password' => $input['password']] , $input['remember_me'] ?? '')) {
+        if (Auth::attempt(['email' => $input['email'] , 'password' => $input['password']] , $input['remember_me'] ?? '')) {
             $request->session()->regenerate();
             return response()->json([
                 'success' => true

@@ -8,10 +8,10 @@
       <div class="row w-100 mx-0">
         <div class="col-lg-4 mx-auto">
           <div class="auth-form-light text-left py-5 px-4 px-sm-5">
-            <div class="brand-logo">
-              <img src="{{asset('template/base-admin-new/images/logo-apotek-hdn-removebg-preview.png')}}" alt="logo">
+            <div class="brand-logo" style="text-align: center">
+              <img src="{{asset('template/base-admin-new/images/logo-apotek-hdn-vol-1.png')}}" alt="logo">
             </div>
-            <h4>Hello! Admin Apotek HDN</h4>
+            <h4>Hello! Admin E-Procurement</h4>
             <h6 class="font-weight-light">Masukan Akun anda untuk melakukan log in</h6>
               <div class="form-group">
                 <input type="email" class="form-control form-control-lg"  id="email" name="email" placeholder="Email">
